@@ -1,0 +1,234 @@
+{
+    "name": "KeyboardInput",
+    "maps": [
+        {
+            "name": "Common",
+            "id": "f80785f2-ecd1-4e8e-b560-4a8d1ffec1a4",
+            "actions": [
+                {
+                    "name": "TurnCam",
+                    "type": "Button",
+                    "id": "5f739418-2d0a-4b3e-a4d7-534c5d75783d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TiltCam",
+                    "type": "Button",
+                    "id": "14c01eb4-f627-410c-a613-25e00759919d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "bfd760e5-813c-49ba-b88f-184b99da8c47",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnCam",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "3d9c858a-1563-4ae9-be3c-b1f7773f8b76",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnCam",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "160f8fc9-4afd-4c3a-a8ab-09bcb3745355",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnCam",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "223fe77e-0a3b-4b31-b26e-4c334ee917bd",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TiltCam",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "c772adb8-52a5-4121-b591-2fdc7b47d7cb",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TiltCam",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "1510dfa9-15ac-4351-a938-3f3eb45dc373",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TiltCam",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "Base",
+            "id": "969c29a2-be0c-4b8e-a221-7fb25f387981",
+            "actions": [
+                {
+                    "name": "ConfirmTarget",
+                    "type": "Button",
+                    "id": "2022e8e4-9df9-4d2b-9cbf-e2da79d640da",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TargetPositionEnable",
+                    "type": "Button",
+                    "id": "de3d4e58-ac43-49f0-b339-4a68ab49eca0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TargetPosition",
+                    "type": "Value",
+                    "id": "4f606d49-849a-4872-bbc5-99630588b825",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "TargetRotation",
+                    "type": "Value",
+                    "id": "8f2fb25c-0cb8-4cb5-9238-290463f48b22",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "StopRobot",
+                    "type": "Button",
+                    "id": "b397622a-78e9-48ef-be23-22db1fc78415",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2f9bf93e-ed8a-41b0-99e7-f2f7496334ef",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ConfirmTarget",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9865120f-55ab-488a-8a90-49f800949d73",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TargetPositionEnable",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2700ac00-b1bc-4efa-9cd1-d24bf21a7cfc",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TargetPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "45684fda-ce55-49db-89b3-12d470b39fca",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TargetRotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a40171d7-4ea2-4c16-a5ac-04673e760bbf",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StopRobot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Arm",
+            "id": "5f3d7503-9ab1-43fe-b699-13a960dcf6db",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "50104734-b26c-4dda-a5d0-4d3eb1cd8e6b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a633eec3-371b-47e0-a786-292b7e75de6a",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

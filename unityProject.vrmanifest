@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.mrteleopstudyv2.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\Users\\g-baker-admin\\Documents\\GitHub\\MR-Teleop-Study-V2\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "MR-Teleop-Study-V2 [Testing]"
+        }
+      }
+    }
+  ]
+}

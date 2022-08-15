@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO.Compression;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class JoystickInputHandler : MonoBehaviour
@@ -18,6 +19,7 @@ public class JoystickInputHandler : MonoBehaviour
 
     [Header("Events")]
     public Vector3Event setTargetPositionEvents;
+    public UnityEvent playNextTutorialEvents;
 
     // Internal
     bool moveTargetEnabled = false;
@@ -32,11 +34,26 @@ public class JoystickInputHandler : MonoBehaviour
     private void OnEnable()
     {
         inputActions.Arm.Enable();
+        inputActions.Common.Enable();
 
         inputActions.Arm.MoveTargetHorizontalJoy.performed += MoveTargetHorizontalJoy_performed;
         inputActions.Arm.MoveTargetHorizontalJoy.canceled += MoveTargetHorizontalJoy_canceled;
         inputActions.Arm.MoveTargetVerticalJoy.performed += MoveTargetVerticalJoy_performed;
         inputActions.Arm.MoveTargetVerticalJoy.canceled += MoveTargetVerticalJoy_canceled;
+        inputActions.Common.NextTutorial.performed += PlayNextTutorial;
+    }
+
+    private void OnDisable()
+    {
+        inputActions.Arm.MoveTargetHorizontalJoy.performed -= MoveTargetHorizontalJoy_performed;
+        inputActions.Arm.MoveTargetHorizontalJoy.canceled -= MoveTargetHorizontalJoy_canceled;
+        inputActions.Arm.MoveTargetVerticalJoy.performed -= MoveTargetVerticalJoy_performed;
+        inputActions.Arm.MoveTargetVerticalJoy.canceled -= MoveTargetVerticalJoy_canceled;
+
+        inputActions.Common.NextTutorial.performed -= PlayNextTutorial;
+
+        inputActions.Common.Disable();
+        inputActions.Arm.Disable();
     }
 
 
@@ -101,12 +118,14 @@ public class JoystickInputHandler : MonoBehaviour
         moveTargetVerticalEnabled = false;
     }
 
-    private void OnDisable()
+
+    private void PlayNextTutorial(InputAction.CallbackContext obj)
     {
-
-
-        inputActions.Arm.Disable();
+        Debug.Log("HERE");
+        playNextTutorialEvents.Invoke();
     }
+
+
 
     // Update is called once per frame
     void Update()

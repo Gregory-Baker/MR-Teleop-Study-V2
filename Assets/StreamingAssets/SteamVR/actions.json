@@ -33,6 +33,10 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/Common/in/NextTutorial",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/Base/in/Select Target",
       "type": "boolean"
     },
@@ -46,6 +50,14 @@
     },
     {
       "name": "/actions/Base/in/Stop Robot",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/Base/in/MoveForward",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/Base/in/MoveBackward",
       "type": "boolean"
     },
     {

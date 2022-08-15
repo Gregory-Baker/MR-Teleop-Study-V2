@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RosMessageTypes.MoveBase;
 using Unity.Robotics.ROSTCPConnector.ROSGeometry;
+using RosMessageTypes.KinovaCustom;
 using UnityEngine.Events;
 
 public class BaseTargetHandler : MonoBehaviour
@@ -21,6 +22,7 @@ public class BaseTargetHandler : MonoBehaviour
     [Header("Events")]
     public RosMessageEvent publishTargetTransformEvents;
     public UnityEvent stopRobotEvents;
+    public RosMessageEvent moveDistanceEvents;
 
 
     public void SetTargetOrientation()
@@ -72,6 +74,19 @@ public class BaseTargetHandler : MonoBehaviour
     public void MoveToBaseLink()
     {
         transform.SetPositionAndRotation(baseLinkTransform.position, baseLinkTransform.rotation);
+    }
+
+    public void MoveTargetDistance(float distance)
+    {
+        var translation = new Vector3(0, 0, distance);
+        transform.Translate(translation, Space.Self);
+    }
+
+    public void MoveRobotDistance(float distance)
+    {
+        var goal = new MoveDistanceActionGoal();
+        goal.goal.move_distance = distance;
+        moveDistanceEvents.Invoke(goal);
     }
 
     private void Update()

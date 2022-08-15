@@ -48,5 +48,21 @@ namespace Valve.VR
                 return SteamVR_Actions.base_Stop_Robot;
             }
         }
+        
+        public virtual SteamVR_Action_Boolean MoveForward
+        {
+            get
+            {
+                return SteamVR_Actions.base_MoveForward;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean MoveBackward
+        {
+            get
+            {
+                return SteamVR_Actions.base_MoveBackward;
+            }
+        }
     }
 }

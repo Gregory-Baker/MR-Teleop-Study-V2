@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "NextTutorial",
+                    "type": "Button",
+                    "id": "f0146149-a67f-46ae-bb3a-f1a906e44250",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -200,11 +209,22 @@
                 {
                     "name": "",
                     "id": "00734f85-176f-4815-96fe-89157b166f44",
-                    "path": "<Gamepad>/start",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "SwitchControlMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ff82a472-0d67-4b77-8304-bcc99b599b85",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextTutorial",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -513,6 +533,17 @@
                     "name": "",
                     "id": "a9ab5932-8307-41f1-92e1-886dd1753715",
                     "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ArmToHome",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3c36521a-bfa1-4a84-a62a-f6b244d626e5",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

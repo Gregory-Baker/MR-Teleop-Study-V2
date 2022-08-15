@@ -33,6 +33,8 @@ namespace Valve.VR
         
         private static SteamVR_Action_Boolean p_common_Centre_Cam;
         
+        private static SteamVR_Action_Boolean p_common_NextTutorial;
+        
         private static SteamVR_Action_Boolean p_base_Select_Target;
         
         private static SteamVR_Action_Vector2 p_base_Rotate_Target;
@@ -40,6 +42,10 @@ namespace Valve.VR
         private static SteamVR_Action_Boolean p_base_Confirm_Target;
         
         private static SteamVR_Action_Boolean p_base_Stop_Robot;
+        
+        private static SteamVR_Action_Boolean p_base_MoveForward;
+        
+        private static SteamVR_Action_Boolean p_base_MoveBackward;
         
         private static SteamVR_Action_Boolean p_arm_Move_Target_Enable;
         
@@ -111,6 +117,14 @@ namespace Valve.VR
             }
         }
         
+        public static SteamVR_Action_Boolean common_NextTutorial
+        {
+            get
+            {
+                return SteamVR_Actions.p_common_NextTutorial.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
         public static SteamVR_Action_Boolean base_Select_Target
         {
             get
@@ -140,6 +154,22 @@ namespace Valve.VR
             get
             {
                 return SteamVR_Actions.p_base_Stop_Robot.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean base_MoveForward
+        {
+            get
+            {
+                return SteamVR_Actions.p_base_MoveForward.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean base_MoveBackward
+        {
+            get
+            {
+                return SteamVR_Actions.p_base_MoveBackward.GetCopy<SteamVR_Action_Boolean>();
             }
         }
         
@@ -178,10 +208,13 @@ namespace Valve.VR
                     SteamVR_Actions.common_Turn_Cam_Left,
                     SteamVR_Actions.common_Turn_Cam_Right,
                     SteamVR_Actions.common_Centre_Cam,
+                    SteamVR_Actions.common_NextTutorial,
                     SteamVR_Actions.base_Select_Target,
                     SteamVR_Actions.base_Rotate_Target,
                     SteamVR_Actions.base_Confirm_Target,
                     SteamVR_Actions.base_Stop_Robot,
+                    SteamVR_Actions.base_MoveForward,
+                    SteamVR_Actions.base_MoveBackward,
                     SteamVR_Actions.arm_Move_Target_Enable,
                     SteamVR_Actions.arm_Confirm_Target,
                     SteamVR_Actions.arm_Stop_Arm};
@@ -194,10 +227,13 @@ namespace Valve.VR
                     SteamVR_Actions.common_Turn_Cam_Left,
                     SteamVR_Actions.common_Turn_Cam_Right,
                     SteamVR_Actions.common_Centre_Cam,
+                    SteamVR_Actions.common_NextTutorial,
                     SteamVR_Actions.base_Select_Target,
                     SteamVR_Actions.base_Rotate_Target,
                     SteamVR_Actions.base_Confirm_Target,
                     SteamVR_Actions.base_Stop_Robot,
+                    SteamVR_Actions.base_MoveForward,
+                    SteamVR_Actions.base_MoveBackward,
                     SteamVR_Actions.arm_Move_Target_Enable,
                     SteamVR_Actions.arm_Confirm_Target,
                     SteamVR_Actions.arm_Stop_Arm};
@@ -212,9 +248,12 @@ namespace Valve.VR
                     SteamVR_Actions.common_Turn_Cam_Left,
                     SteamVR_Actions.common_Turn_Cam_Right,
                     SteamVR_Actions.common_Centre_Cam,
+                    SteamVR_Actions.common_NextTutorial,
                     SteamVR_Actions.base_Select_Target,
                     SteamVR_Actions.base_Confirm_Target,
                     SteamVR_Actions.base_Stop_Robot,
+                    SteamVR_Actions.base_MoveForward,
+                    SteamVR_Actions.base_MoveBackward,
                     SteamVR_Actions.arm_Move_Target_Enable,
                     SteamVR_Actions.arm_Confirm_Target,
                     SteamVR_Actions.arm_Stop_Arm};
@@ -232,10 +271,13 @@ namespace Valve.VR
                     SteamVR_Actions.common_Turn_Cam_Left,
                     SteamVR_Actions.common_Turn_Cam_Right,
                     SteamVR_Actions.common_Centre_Cam,
+                    SteamVR_Actions.common_NextTutorial,
                     SteamVR_Actions.base_Select_Target,
                     SteamVR_Actions.base_Rotate_Target,
                     SteamVR_Actions.base_Confirm_Target,
                     SteamVR_Actions.base_Stop_Robot,
+                    SteamVR_Actions.base_MoveForward,
+                    SteamVR_Actions.base_MoveBackward,
                     SteamVR_Actions.arm_Move_Target_Enable,
                     SteamVR_Actions.arm_Confirm_Target,
                     SteamVR_Actions.arm_Stop_Arm};
@@ -251,10 +293,13 @@ namespace Valve.VR
             SteamVR_Actions.p_common_Turn_Cam_Left = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Common/in/Turn Cam Left")));
             SteamVR_Actions.p_common_Turn_Cam_Right = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Common/in/Turn Cam Right")));
             SteamVR_Actions.p_common_Centre_Cam = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Common/in/Centre Cam")));
+            SteamVR_Actions.p_common_NextTutorial = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Common/in/NextTutorial")));
             SteamVR_Actions.p_base_Select_Target = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Base/in/Select Target")));
             SteamVR_Actions.p_base_Rotate_Target = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/Base/in/Rotate Target")));
             SteamVR_Actions.p_base_Confirm_Target = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Base/in/Confirm Target")));
             SteamVR_Actions.p_base_Stop_Robot = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Base/in/Stop Robot")));
+            SteamVR_Actions.p_base_MoveForward = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Base/in/MoveForward")));
+            SteamVR_Actions.p_base_MoveBackward = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Base/in/MoveBackward")));
             SteamVR_Actions.p_arm_Move_Target_Enable = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Arm/in/Move Target Enable")));
             SteamVR_Actions.p_arm_Confirm_Target = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Arm/in/Confirm_Target")));
             SteamVR_Actions.p_arm_Stop_Arm = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Arm/in/Stop Arm")));

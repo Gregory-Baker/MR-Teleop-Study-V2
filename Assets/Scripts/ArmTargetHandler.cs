@@ -20,6 +20,7 @@ public class ArmTargetHandler : MonoBehaviour
     public Vector3 staticPositionOffset; 
     public Vector3 staticRotationOffset;
     public float prePickVerticalOffset = 0.125f;
+    public float prePlaceVerticalOffset = 0.3f;
 
     [Header("Events")]
     public RosMessageEvent poseGoalEvents;
@@ -61,7 +62,6 @@ public class ArmTargetHandler : MonoBehaviour
         PickObjectFullActionGoal goal = new PickObjectFullActionGoal();
 
         goal.goal.pre_pick_pose = GetTargetPose();
-        goal.goal.pre_pick_pose.position.z += prePickVerticalOffset;
 
         return goal;
     }
@@ -130,12 +130,14 @@ public class ArmTargetHandler : MonoBehaviour
     public void PickFull()
     {
         var goal = GeneratePickObjectFullMsg();
+        goal.goal.pre_pick_pose.position.z += prePickVerticalOffset;
         pickObjectFullEvents.Invoke(goal);
     }
 
     public void PlaceFull()
     {
         var goal = GeneratePickObjectFullMsg();
+        goal.goal.pre_pick_pose.position.z += prePlaceVerticalOffset;
         placeObjectFullEvents.Invoke(goal);
     }
 

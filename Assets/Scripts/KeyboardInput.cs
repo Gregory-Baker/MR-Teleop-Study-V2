@@ -62,6 +62,15 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextTutorial"",
+                    ""type"": ""Button"",
+                    ""id"": ""f0146149-a67f-46ae-bb3a-f1a906e44250"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -222,11 +231,22 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""00734f85-176f-4815-96fe-89157b166f44"",
-                    ""path"": ""<Gamepad>/start"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SwitchControlMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ff82a472-0d67-4b77-8304-bcc99b599b85"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextTutorial"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -544,6 +564,17 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""3c36521a-bfa1-4a84-a62a-f6b244d626e5"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ArmToHome"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""9fb4af79-9105-4cb0-91db-8622c4df0389"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -608,6 +639,7 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
         m_Common_TiltCam = m_Common.FindAction("TiltCam", throwIfNotFound: true);
         m_Common_CentreCam = m_Common.FindAction("CentreCam", throwIfNotFound: true);
         m_Common_SwitchControlMode = m_Common.FindAction("SwitchControlMode", throwIfNotFound: true);
+        m_Common_NextTutorial = m_Common.FindAction("NextTutorial", throwIfNotFound: true);
         // Base
         m_Base = asset.FindActionMap("Base", throwIfNotFound: true);
         m_Base_ConfirmTarget = m_Base.FindAction("ConfirmTarget", throwIfNotFound: true);
@@ -692,6 +724,7 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Common_TiltCam;
     private readonly InputAction m_Common_CentreCam;
     private readonly InputAction m_Common_SwitchControlMode;
+    private readonly InputAction m_Common_NextTutorial;
     public struct CommonActions
     {
         private @KeyboardInput m_Wrapper;
@@ -700,6 +733,7 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
         public InputAction @TiltCam => m_Wrapper.m_Common_TiltCam;
         public InputAction @CentreCam => m_Wrapper.m_Common_CentreCam;
         public InputAction @SwitchControlMode => m_Wrapper.m_Common_SwitchControlMode;
+        public InputAction @NextTutorial => m_Wrapper.m_Common_NextTutorial;
         public InputActionMap Get() { return m_Wrapper.m_Common; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -721,6 +755,9 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                 @SwitchControlMode.started -= m_Wrapper.m_CommonActionsCallbackInterface.OnSwitchControlMode;
                 @SwitchControlMode.performed -= m_Wrapper.m_CommonActionsCallbackInterface.OnSwitchControlMode;
                 @SwitchControlMode.canceled -= m_Wrapper.m_CommonActionsCallbackInterface.OnSwitchControlMode;
+                @NextTutorial.started -= m_Wrapper.m_CommonActionsCallbackInterface.OnNextTutorial;
+                @NextTutorial.performed -= m_Wrapper.m_CommonActionsCallbackInterface.OnNextTutorial;
+                @NextTutorial.canceled -= m_Wrapper.m_CommonActionsCallbackInterface.OnNextTutorial;
             }
             m_Wrapper.m_CommonActionsCallbackInterface = instance;
             if (instance != null)
@@ -737,6 +774,9 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                 @SwitchControlMode.started += instance.OnSwitchControlMode;
                 @SwitchControlMode.performed += instance.OnSwitchControlMode;
                 @SwitchControlMode.canceled += instance.OnSwitchControlMode;
+                @NextTutorial.started += instance.OnNextTutorial;
+                @NextTutorial.performed += instance.OnNextTutorial;
+                @NextTutorial.canceled += instance.OnNextTutorial;
             }
         }
     }
@@ -933,6 +973,7 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
         void OnTiltCam(InputAction.CallbackContext context);
         void OnCentreCam(InputAction.CallbackContext context);
         void OnSwitchControlMode(InputAction.CallbackContext context);
+        void OnNextTutorial(InputAction.CallbackContext context);
     }
     public interface IBaseActions
     {

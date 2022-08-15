@@ -18,6 +18,8 @@ public class VRBaseInputHandler : MonoBehaviour
     public SteamVR_Action_Vector2 rotateTargetAction;
     public SteamVR_Action_Boolean confirmTargetAction;
     public SteamVR_Action_Boolean stopRobotAction;
+    public SteamVR_Action_Boolean moveRobotForwardAction;
+    public SteamVR_Action_Boolean moveRobotBackwardAction;
 
     [Header("Events")]
     public UnityEvent selectTargetDownEvents;
@@ -26,7 +28,14 @@ public class VRBaseInputHandler : MonoBehaviour
     public FloatEvent rotateTargetEvents;
     public UnityEvent confirmTargetEvents;
     public UnityEvent stopRobotEvents;
+    public FloatEvent moveTargetEvents;
+    public FloatEvent moveRobotEvents;
 
+    [Header("Params")]
+    public float targetMoveSpeed = 0.2f;
+
+    //Internal
+    float targetDistance = 0;
 
     private void OnEnable()
     {
@@ -37,8 +46,15 @@ public class VRBaseInputHandler : MonoBehaviour
         rotateTargetAction[inputSource].onAxis += RotateTarget;
         confirmTargetAction[inputSource].onStateDown += ConfirmTarget;
         stopRobotAction[inputSource].onStateDown += StopRobot;
-    }
 
+        moveRobotForwardAction[inputSource].onStateDown += MoveRobotStarted;
+        moveRobotForwardAction[inputSource].onState += MoveTargetForward;
+        moveRobotForwardAction[inputSource].onStateUp += MoveRobotEnded;
+
+        moveRobotBackwardAction[inputSource].onStateDown += MoveRobotStarted;
+        moveRobotBackwardAction[inputSource].onState += MoveTargetBackward;
+        moveRobotBackwardAction[inputSource].onStateUp += MoveRobotEnded;
+    }
 
     private void OnDisable()
     {
@@ -49,6 +65,32 @@ public class VRBaseInputHandler : MonoBehaviour
         confirmTargetAction[inputSource].onStateDown -= ConfirmTarget;
         stopRobotAction[inputSource].onStateDown -= StopRobot;
         actionSet.Deactivate();
+    }
+
+
+    private void MoveRobotStarted(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
+    {
+        targetDistance = 0;
+        stopRobotEvents.Invoke();
+    }
+
+    private void MoveTargetForward(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
+    {
+        float distance = targetMoveSpeed * Time.deltaTime;
+        targetDistance += distance;
+        moveTargetEvents.Invoke(distance);
+    }
+
+    private void MoveTargetBackward(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
+    {
+        float distance = -targetMoveSpeed * Time.deltaTime;
+        targetDistance += distance;
+        moveTargetEvents.Invoke(distance);
+    }
+
+    private void MoveRobotEnded(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
+    {
+        moveRobotEvents.Invoke(targetDistance);
     }
 
     private void SelectTargetDown(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)

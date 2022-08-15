@@ -80,5 +80,13 @@ namespace Valve.VR
                 return SteamVR_Actions.common_Centre_Cam;
             }
         }
+        
+        public virtual SteamVR_Action_Boolean NextTutorial
+        {
+            get
+            {
+                return SteamVR_Actions.common_NextTutorial;
+            }
+        }
     }
 }

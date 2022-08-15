@@ -44,6 +44,24 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CentreCam"",
+                    ""type"": ""Button"",
+                    ""id"": ""25c323cb-2126-43e6-a85c-c4a3040c5245"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchControlMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""f20327f1-edc4-4461-a531-c9707cef76b3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -73,6 +91,39 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                     ""name"": ""positive"",
                     ""id"": ""160f8fc9-4afd-4c3a-a8ab-09bcb3745355"",
                     ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCam"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""3997f585-505b-4e96-9ca0-8fdc0e00ce2e"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCam"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""dd77135d-1c77-45dd-a642-673497af4c79"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnCam"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""01a418d2-a569-4607-b656-c80f9811b5e7"",
+                    ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -112,6 +163,72 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                     ""action"": ""TiltCam"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""e7c64c15-ac92-4858-b3ed-58143fb0489c"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TiltCam"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""eb44adc6-66b7-4ba6-95b2-0115941d0259"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TiltCam"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""392eb5a0-6921-4c4a-8852-a4f7998bafb6"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TiltCam"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c0da8ce8-a45a-4ded-b0d5-5066d03f0252"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CentreCam"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6a616342-b4fe-4d37-8181-59234a03515c"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchControlMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""00734f85-176f-4815-96fe-89157b166f44"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchControlMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -179,6 +296,17 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""1aff7235-51a6-4a01-938d-73d2dd69a663"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ConfirmTarget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""9865120f-55ab-488a-8a90-49f800949d73"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -228,24 +356,244 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
             ""id"": ""5f3d7503-9ab1-43fe-b699-13a960dcf6db"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""ConfirmTarget"",
                     ""type"": ""Button"",
                     ""id"": ""50104734-b26c-4dda-a5d0-4d3eb1cd8e6b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenGripper"",
+                    ""type"": ""Button"",
+                    ""id"": ""997b368f-6fcf-4426-a740-4268dc4f0c6a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CloseGripper"",
+                    ""type"": ""Button"",
+                    ""id"": ""53d00b9c-5285-48e8-89b7-e1e843fba6c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PickObject"",
+                    ""type"": ""Button"",
+                    ""id"": ""1baeb31b-8c00-4c6e-b1ba-b6a8432b90b1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlaceObject"",
+                    ""type"": ""Button"",
+                    ""id"": ""1bbe208f-bae7-49c8-abbc-d653a3948ee6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StopArm"",
+                    ""type"": ""Button"",
+                    ""id"": ""5eea0f1b-0c14-42b8-a3dc-aabb5d6f5d5d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ArmToHome"",
+                    ""type"": ""Button"",
+                    ""id"": ""aea89e46-5d86-464e-8cad-adc41ad7d1d3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveTargetEnable"",
+                    ""type"": ""Button"",
+                    ""id"": ""afe67857-39d7-462f-ad48-0d5ae2eae50d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveTargetHorizontal"",
+                    ""type"": ""Value"",
+                    ""id"": ""a6f3c2b2-66e5-4cbe-870f-1692e58ef967"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MoveTargetVertical"",
+                    ""type"": ""Value"",
+                    ""id"": ""123c0de8-9dbc-401e-a991-782ff8814a32"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MoveTargetHorizontalJoy"",
+                    ""type"": ""Value"",
+                    ""id"": ""2f3b7fed-fded-402a-8da2-b5e38db67f2d"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MoveTargetVerticalJoy"",
+                    ""type"": ""Value"",
+                    ""id"": ""e8851d02-7125-4cb3-b3a1-92425e7a6af2"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""a633eec3-371b-47e0-a786-292b7e75de6a"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""ConfirmTarget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd952d8e-cc6d-45b6-a4b4-626cb04e03ee"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ConfirmTarget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""82ddb253-c4f9-4473-b6c7-4e60cb245820"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ConfirmTarget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c2e01b4-036e-4779-9a91-b074b776ca60"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenGripper"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2264fd08-9afd-4d5e-8a0e-f501f423a990"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseGripper"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8191dad7-45d0-4fb6-a203-8da0e9e39f8e"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StopArm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a9ab5932-8307-41f1-92e1-886dd1753715"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ArmToHome"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9fb4af79-9105-4cb0-91db-8622c4df0389"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveTargetEnable"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2e70ae1-2e65-4848-9774-fc95db006f19"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveTargetHorizontal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8a56dd40-ce3c-4091-91fb-06743e423d03"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveTargetVertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""84534932-eaec-4a8a-a4a5-4a2a5147a8b8"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveTargetHorizontalJoy"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""58a05a7f-f796-4f17-bac0-0b82a8a00f92"",
+                    ""path"": ""<Gamepad>/rightStick/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveTargetVerticalJoy"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -258,6 +606,8 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
         m_Common = asset.FindActionMap("Common", throwIfNotFound: true);
         m_Common_TurnCam = m_Common.FindAction("TurnCam", throwIfNotFound: true);
         m_Common_TiltCam = m_Common.FindAction("TiltCam", throwIfNotFound: true);
+        m_Common_CentreCam = m_Common.FindAction("CentreCam", throwIfNotFound: true);
+        m_Common_SwitchControlMode = m_Common.FindAction("SwitchControlMode", throwIfNotFound: true);
         // Base
         m_Base = asset.FindActionMap("Base", throwIfNotFound: true);
         m_Base_ConfirmTarget = m_Base.FindAction("ConfirmTarget", throwIfNotFound: true);
@@ -267,7 +617,18 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
         m_Base_StopRobot = m_Base.FindAction("StopRobot", throwIfNotFound: true);
         // Arm
         m_Arm = asset.FindActionMap("Arm", throwIfNotFound: true);
-        m_Arm_Newaction = m_Arm.FindAction("New action", throwIfNotFound: true);
+        m_Arm_ConfirmTarget = m_Arm.FindAction("ConfirmTarget", throwIfNotFound: true);
+        m_Arm_OpenGripper = m_Arm.FindAction("OpenGripper", throwIfNotFound: true);
+        m_Arm_CloseGripper = m_Arm.FindAction("CloseGripper", throwIfNotFound: true);
+        m_Arm_PickObject = m_Arm.FindAction("PickObject", throwIfNotFound: true);
+        m_Arm_PlaceObject = m_Arm.FindAction("PlaceObject", throwIfNotFound: true);
+        m_Arm_StopArm = m_Arm.FindAction("StopArm", throwIfNotFound: true);
+        m_Arm_ArmToHome = m_Arm.FindAction("ArmToHome", throwIfNotFound: true);
+        m_Arm_MoveTargetEnable = m_Arm.FindAction("MoveTargetEnable", throwIfNotFound: true);
+        m_Arm_MoveTargetHorizontal = m_Arm.FindAction("MoveTargetHorizontal", throwIfNotFound: true);
+        m_Arm_MoveTargetVertical = m_Arm.FindAction("MoveTargetVertical", throwIfNotFound: true);
+        m_Arm_MoveTargetHorizontalJoy = m_Arm.FindAction("MoveTargetHorizontalJoy", throwIfNotFound: true);
+        m_Arm_MoveTargetVerticalJoy = m_Arm.FindAction("MoveTargetVerticalJoy", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -329,12 +690,16 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
     private ICommonActions m_CommonActionsCallbackInterface;
     private readonly InputAction m_Common_TurnCam;
     private readonly InputAction m_Common_TiltCam;
+    private readonly InputAction m_Common_CentreCam;
+    private readonly InputAction m_Common_SwitchControlMode;
     public struct CommonActions
     {
         private @KeyboardInput m_Wrapper;
         public CommonActions(@KeyboardInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @TurnCam => m_Wrapper.m_Common_TurnCam;
         public InputAction @TiltCam => m_Wrapper.m_Common_TiltCam;
+        public InputAction @CentreCam => m_Wrapper.m_Common_CentreCam;
+        public InputAction @SwitchControlMode => m_Wrapper.m_Common_SwitchControlMode;
         public InputActionMap Get() { return m_Wrapper.m_Common; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -350,6 +715,12 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                 @TiltCam.started -= m_Wrapper.m_CommonActionsCallbackInterface.OnTiltCam;
                 @TiltCam.performed -= m_Wrapper.m_CommonActionsCallbackInterface.OnTiltCam;
                 @TiltCam.canceled -= m_Wrapper.m_CommonActionsCallbackInterface.OnTiltCam;
+                @CentreCam.started -= m_Wrapper.m_CommonActionsCallbackInterface.OnCentreCam;
+                @CentreCam.performed -= m_Wrapper.m_CommonActionsCallbackInterface.OnCentreCam;
+                @CentreCam.canceled -= m_Wrapper.m_CommonActionsCallbackInterface.OnCentreCam;
+                @SwitchControlMode.started -= m_Wrapper.m_CommonActionsCallbackInterface.OnSwitchControlMode;
+                @SwitchControlMode.performed -= m_Wrapper.m_CommonActionsCallbackInterface.OnSwitchControlMode;
+                @SwitchControlMode.canceled -= m_Wrapper.m_CommonActionsCallbackInterface.OnSwitchControlMode;
             }
             m_Wrapper.m_CommonActionsCallbackInterface = instance;
             if (instance != null)
@@ -360,6 +731,12 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                 @TiltCam.started += instance.OnTiltCam;
                 @TiltCam.performed += instance.OnTiltCam;
                 @TiltCam.canceled += instance.OnTiltCam;
+                @CentreCam.started += instance.OnCentreCam;
+                @CentreCam.performed += instance.OnCentreCam;
+                @CentreCam.canceled += instance.OnCentreCam;
+                @SwitchControlMode.started += instance.OnSwitchControlMode;
+                @SwitchControlMode.performed += instance.OnSwitchControlMode;
+                @SwitchControlMode.canceled += instance.OnSwitchControlMode;
             }
         }
     }
@@ -433,12 +810,34 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
     // Arm
     private readonly InputActionMap m_Arm;
     private IArmActions m_ArmActionsCallbackInterface;
-    private readonly InputAction m_Arm_Newaction;
+    private readonly InputAction m_Arm_ConfirmTarget;
+    private readonly InputAction m_Arm_OpenGripper;
+    private readonly InputAction m_Arm_CloseGripper;
+    private readonly InputAction m_Arm_PickObject;
+    private readonly InputAction m_Arm_PlaceObject;
+    private readonly InputAction m_Arm_StopArm;
+    private readonly InputAction m_Arm_ArmToHome;
+    private readonly InputAction m_Arm_MoveTargetEnable;
+    private readonly InputAction m_Arm_MoveTargetHorizontal;
+    private readonly InputAction m_Arm_MoveTargetVertical;
+    private readonly InputAction m_Arm_MoveTargetHorizontalJoy;
+    private readonly InputAction m_Arm_MoveTargetVerticalJoy;
     public struct ArmActions
     {
         private @KeyboardInput m_Wrapper;
         public ArmActions(@KeyboardInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Arm_Newaction;
+        public InputAction @ConfirmTarget => m_Wrapper.m_Arm_ConfirmTarget;
+        public InputAction @OpenGripper => m_Wrapper.m_Arm_OpenGripper;
+        public InputAction @CloseGripper => m_Wrapper.m_Arm_CloseGripper;
+        public InputAction @PickObject => m_Wrapper.m_Arm_PickObject;
+        public InputAction @PlaceObject => m_Wrapper.m_Arm_PlaceObject;
+        public InputAction @StopArm => m_Wrapper.m_Arm_StopArm;
+        public InputAction @ArmToHome => m_Wrapper.m_Arm_ArmToHome;
+        public InputAction @MoveTargetEnable => m_Wrapper.m_Arm_MoveTargetEnable;
+        public InputAction @MoveTargetHorizontal => m_Wrapper.m_Arm_MoveTargetHorizontal;
+        public InputAction @MoveTargetVertical => m_Wrapper.m_Arm_MoveTargetVertical;
+        public InputAction @MoveTargetHorizontalJoy => m_Wrapper.m_Arm_MoveTargetHorizontalJoy;
+        public InputAction @MoveTargetVerticalJoy => m_Wrapper.m_Arm_MoveTargetVerticalJoy;
         public InputActionMap Get() { return m_Wrapper.m_Arm; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -448,16 +847,82 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_ArmActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_ArmActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_ArmActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_ArmActionsCallbackInterface.OnNewaction;
+                @ConfirmTarget.started -= m_Wrapper.m_ArmActionsCallbackInterface.OnConfirmTarget;
+                @ConfirmTarget.performed -= m_Wrapper.m_ArmActionsCallbackInterface.OnConfirmTarget;
+                @ConfirmTarget.canceled -= m_Wrapper.m_ArmActionsCallbackInterface.OnConfirmTarget;
+                @OpenGripper.started -= m_Wrapper.m_ArmActionsCallbackInterface.OnOpenGripper;
+                @OpenGripper.performed -= m_Wrapper.m_ArmActionsCallbackInterface.OnOpenGripper;
+                @OpenGripper.canceled -= m_Wrapper.m_ArmActionsCallbackInterface.OnOpenGripper;
+                @CloseGripper.started -= m_Wrapper.m_ArmActionsCallbackInterface.OnCloseGripper;
+                @CloseGripper.performed -= m_Wrapper.m_ArmActionsCallbackInterface.OnCloseGripper;
+                @CloseGripper.canceled -= m_Wrapper.m_ArmActionsCallbackInterface.OnCloseGripper;
+                @PickObject.started -= m_Wrapper.m_ArmActionsCallbackInterface.OnPickObject;
+                @PickObject.performed -= m_Wrapper.m_ArmActionsCallbackInterface.OnPickObject;
+                @PickObject.canceled -= m_Wrapper.m_ArmActionsCallbackInterface.OnPickObject;
+                @PlaceObject.started -= m_Wrapper.m_ArmActionsCallbackInterface.OnPlaceObject;
+                @PlaceObject.performed -= m_Wrapper.m_ArmActionsCallbackInterface.OnPlaceObject;
+                @PlaceObject.canceled -= m_Wrapper.m_ArmActionsCallbackInterface.OnPlaceObject;
+                @StopArm.started -= m_Wrapper.m_ArmActionsCallbackInterface.OnStopArm;
+                @StopArm.performed -= m_Wrapper.m_ArmActionsCallbackInterface.OnStopArm;
+                @StopArm.canceled -= m_Wrapper.m_ArmActionsCallbackInterface.OnStopArm;
+                @ArmToHome.started -= m_Wrapper.m_ArmActionsCallbackInterface.OnArmToHome;
+                @ArmToHome.performed -= m_Wrapper.m_ArmActionsCallbackInterface.OnArmToHome;
+                @ArmToHome.canceled -= m_Wrapper.m_ArmActionsCallbackInterface.OnArmToHome;
+                @MoveTargetEnable.started -= m_Wrapper.m_ArmActionsCallbackInterface.OnMoveTargetEnable;
+                @MoveTargetEnable.performed -= m_Wrapper.m_ArmActionsCallbackInterface.OnMoveTargetEnable;
+                @MoveTargetEnable.canceled -= m_Wrapper.m_ArmActionsCallbackInterface.OnMoveTargetEnable;
+                @MoveTargetHorizontal.started -= m_Wrapper.m_ArmActionsCallbackInterface.OnMoveTargetHorizontal;
+                @MoveTargetHorizontal.performed -= m_Wrapper.m_ArmActionsCallbackInterface.OnMoveTargetHorizontal;
+                @MoveTargetHorizontal.canceled -= m_Wrapper.m_ArmActionsCallbackInterface.OnMoveTargetHorizontal;
+                @MoveTargetVertical.started -= m_Wrapper.m_ArmActionsCallbackInterface.OnMoveTargetVertical;
+                @MoveTargetVertical.performed -= m_Wrapper.m_ArmActionsCallbackInterface.OnMoveTargetVertical;
+                @MoveTargetVertical.canceled -= m_Wrapper.m_ArmActionsCallbackInterface.OnMoveTargetVertical;
+                @MoveTargetHorizontalJoy.started -= m_Wrapper.m_ArmActionsCallbackInterface.OnMoveTargetHorizontalJoy;
+                @MoveTargetHorizontalJoy.performed -= m_Wrapper.m_ArmActionsCallbackInterface.OnMoveTargetHorizontalJoy;
+                @MoveTargetHorizontalJoy.canceled -= m_Wrapper.m_ArmActionsCallbackInterface.OnMoveTargetHorizontalJoy;
+                @MoveTargetVerticalJoy.started -= m_Wrapper.m_ArmActionsCallbackInterface.OnMoveTargetVerticalJoy;
+                @MoveTargetVerticalJoy.performed -= m_Wrapper.m_ArmActionsCallbackInterface.OnMoveTargetVerticalJoy;
+                @MoveTargetVerticalJoy.canceled -= m_Wrapper.m_ArmActionsCallbackInterface.OnMoveTargetVerticalJoy;
             }
             m_Wrapper.m_ArmActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @ConfirmTarget.started += instance.OnConfirmTarget;
+                @ConfirmTarget.performed += instance.OnConfirmTarget;
+                @ConfirmTarget.canceled += instance.OnConfirmTarget;
+                @OpenGripper.started += instance.OnOpenGripper;
+                @OpenGripper.performed += instance.OnOpenGripper;
+                @OpenGripper.canceled += instance.OnOpenGripper;
+                @CloseGripper.started += instance.OnCloseGripper;
+                @CloseGripper.performed += instance.OnCloseGripper;
+                @CloseGripper.canceled += instance.OnCloseGripper;
+                @PickObject.started += instance.OnPickObject;
+                @PickObject.performed += instance.OnPickObject;
+                @PickObject.canceled += instance.OnPickObject;
+                @PlaceObject.started += instance.OnPlaceObject;
+                @PlaceObject.performed += instance.OnPlaceObject;
+                @PlaceObject.canceled += instance.OnPlaceObject;
+                @StopArm.started += instance.OnStopArm;
+                @StopArm.performed += instance.OnStopArm;
+                @StopArm.canceled += instance.OnStopArm;
+                @ArmToHome.started += instance.OnArmToHome;
+                @ArmToHome.performed += instance.OnArmToHome;
+                @ArmToHome.canceled += instance.OnArmToHome;
+                @MoveTargetEnable.started += instance.OnMoveTargetEnable;
+                @MoveTargetEnable.performed += instance.OnMoveTargetEnable;
+                @MoveTargetEnable.canceled += instance.OnMoveTargetEnable;
+                @MoveTargetHorizontal.started += instance.OnMoveTargetHorizontal;
+                @MoveTargetHorizontal.performed += instance.OnMoveTargetHorizontal;
+                @MoveTargetHorizontal.canceled += instance.OnMoveTargetHorizontal;
+                @MoveTargetVertical.started += instance.OnMoveTargetVertical;
+                @MoveTargetVertical.performed += instance.OnMoveTargetVertical;
+                @MoveTargetVertical.canceled += instance.OnMoveTargetVertical;
+                @MoveTargetHorizontalJoy.started += instance.OnMoveTargetHorizontalJoy;
+                @MoveTargetHorizontalJoy.performed += instance.OnMoveTargetHorizontalJoy;
+                @MoveTargetHorizontalJoy.canceled += instance.OnMoveTargetHorizontalJoy;
+                @MoveTargetVerticalJoy.started += instance.OnMoveTargetVerticalJoy;
+                @MoveTargetVerticalJoy.performed += instance.OnMoveTargetVerticalJoy;
+                @MoveTargetVerticalJoy.canceled += instance.OnMoveTargetVerticalJoy;
             }
         }
     }
@@ -466,6 +931,8 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
     {
         void OnTurnCam(InputAction.CallbackContext context);
         void OnTiltCam(InputAction.CallbackContext context);
+        void OnCentreCam(InputAction.CallbackContext context);
+        void OnSwitchControlMode(InputAction.CallbackContext context);
     }
     public interface IBaseActions
     {
@@ -477,6 +944,17 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
     }
     public interface IArmActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnConfirmTarget(InputAction.CallbackContext context);
+        void OnOpenGripper(InputAction.CallbackContext context);
+        void OnCloseGripper(InputAction.CallbackContext context);
+        void OnPickObject(InputAction.CallbackContext context);
+        void OnPlaceObject(InputAction.CallbackContext context);
+        void OnStopArm(InputAction.CallbackContext context);
+        void OnArmToHome(InputAction.CallbackContext context);
+        void OnMoveTargetEnable(InputAction.CallbackContext context);
+        void OnMoveTargetHorizontal(InputAction.CallbackContext context);
+        void OnMoveTargetVertical(InputAction.CallbackContext context);
+        void OnMoveTargetHorizontalJoy(InputAction.CallbackContext context);
+        void OnMoveTargetVerticalJoy(InputAction.CallbackContext context);
     }
 }

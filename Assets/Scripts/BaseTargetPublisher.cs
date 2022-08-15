@@ -33,6 +33,11 @@ public class BaseTargetPublisher : MonoBehaviour
         ros.RegisterPublisher<GoalIDMsg>(moveBaseCancel);
     }
 
+    private void OnApplicationQuit()
+    {
+        StopRobot();
+    }
+
     public void PublishWithDelay(string topic, Unity.Robotics.ROSTCPConnector.MessageGeneration.Message message, float delay = 0)
     {
         StartCoroutine(PublishWithDelayCoroutine(topic, message, delay));

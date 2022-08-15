@@ -12,8 +12,7 @@ public class PanTiltPublisher : MonoBehaviour
 {
     ROSConnection ros;
 
-    public string topicName = "head_rot";
-    public float publishMessageFrequency = 0f;
+    public string topicName = "/head_rot";
 
     [Header("External Objects")]
     public PanTiltHandler panTiltHandler;
@@ -21,23 +20,23 @@ public class PanTiltPublisher : MonoBehaviour
     // Inernal
     float timeElapsed;
     RosTopicState publisher;
-    PanTiltAngleMsg headRotMsg;
+    PanTiltAngleMsg headRotMsg = new PanTiltAngleMsg();
 
-    void Awake()
+    void Start()
     {
         // start the ROS connection
         ros = ROSConnection.GetOrCreateInstance();
-        publisher = ros.RegisterPublisher<PanTiltAngleMsg>(topicName);
 
-        headRotMsg = new PanTiltAngleMsg();
+        publisher = ros.RegisterPublisher<PanTiltAngleMsg>(topicName);
     }
 
-    
-    void Update()
-    {
-        timeElapsed += Time.deltaTime;
-        if (ros.isActiveAndEnabled && timeElapsed > publishMessageFrequency)
+
+    void FixedUpdate()
+    {    
+        if (ros.isActiveAndEnabled)
         {
+            // publisher = ros.RegisterPublisher<PanTiltAngleMsg>(topicName);
+
             headRotMsg.pan_angle = panTiltHandler.panAngle;
             headRotMsg.tilt_angle = panTiltHandler.tiltAngle;
 

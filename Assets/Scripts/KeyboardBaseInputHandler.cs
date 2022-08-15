@@ -14,7 +14,7 @@ public class KeyboardBaseInputHandler : MonoBehaviour
 
     [Header("External Objects")]
     public GameObject targetObject;
-    public Camera pointAndClickCamera;
+    public Camera zedLeftCamera;
 
     [Header("Events")]
     public FloatEvent rotateTargetEvents;
@@ -79,14 +79,14 @@ public class KeyboardBaseInputHandler : MonoBehaviour
 
     private void SetTargetPosition(InputAction.CallbackContext obj)
     {
-        if (setTargetEnabled)
+        if (setTargetEnabled && !EventSystem.current.IsPointerOverGameObject())
         {
             Vector2 mousePosition = obj.ReadValue<Vector2>();
 
             mousePosition.x *= (float)zedCamera.ImageWidth / (float)Screen.width;
             mousePosition.y *= (float)zedCamera.ImageHeight / (float)Screen.height;
 
-            Ray ray = pointAndClickCamera.ScreenPointToRay(mousePosition);
+            Ray ray = zedLeftCamera.ScreenPointToRay(mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {

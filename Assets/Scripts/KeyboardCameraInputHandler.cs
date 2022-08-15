@@ -14,6 +14,7 @@ public class KeyboardCameraInputHandler : MonoBehaviour
 
     public FloatEvent turnCamEvents;
     public FloatEvent tiltCamEvents;
+    public UnityEvent centreCamEvents;
 
     // Start is called before the first frame update
     void Awake()
@@ -28,13 +29,14 @@ public class KeyboardCameraInputHandler : MonoBehaviour
 
         inputActions.Common.TurnCam.performed += TurnCam;
         inputActions.Common.TiltCam.performed += TiltCam;
+        inputActions.Common.CentreCam.performed += CentreCam_performed;
     }
-
 
     private void OnDisable()
     {
         inputActions.Common.TurnCam.performed -= TurnCam;
         inputActions.Common.TiltCam.performed -= TiltCam;
+        inputActions.Common.CentreCam.performed -= CentreCam_performed;
 
         inputActions.Common.Disable();
     }
@@ -47,5 +49,10 @@ public class KeyboardCameraInputHandler : MonoBehaviour
     private void TiltCam(InputAction.CallbackContext obj)
     {
         tiltCamEvents.Invoke(obj.ReadValue<float>() * cameraTiltAngle);
+    }
+
+    private void CentreCam_performed(InputAction.CallbackContext obj)
+    {
+        centreCamEvents.Invoke();
     }
 }

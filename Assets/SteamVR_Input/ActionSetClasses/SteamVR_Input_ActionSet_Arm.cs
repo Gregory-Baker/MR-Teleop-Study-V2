@@ -16,5 +16,29 @@ namespace Valve.VR
     
     public class SteamVR_Input_ActionSet_Arm : Valve.VR.SteamVR_ActionSet
     {
+        
+        public virtual SteamVR_Action_Boolean Move_Target_Enable
+        {
+            get
+            {
+                return SteamVR_Actions.arm_Move_Target_Enable;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean Confirm_Target
+        {
+            get
+            {
+                return SteamVR_Actions.arm_Confirm_Target;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean Stop_Arm
+        {
+            get
+            {
+                return SteamVR_Actions.arm_Stop_Arm;
+            }
+        }
     }
 }

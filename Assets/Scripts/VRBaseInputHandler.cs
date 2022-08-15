@@ -11,48 +11,32 @@ public class VRBaseInputHandler : MonoBehaviour
 {
     [Header("SteamVR Input Source")]
     public SteamVR_Input_Sources inputSource = SteamVR_Input_Sources.Any;
+    public SteamVR_ActionSet actionSet;
 
-    [Header("Select Target")]
+    [Header("SteamVR Events")]
     public SteamVR_Action_Boolean selectTargetAction;
+    public SteamVR_Action_Vector2 rotateTargetAction;
+    public SteamVR_Action_Boolean confirmTargetAction;
+    public SteamVR_Action_Boolean stopRobotAction;
+
+    [Header("Events")]
     public UnityEvent selectTargetDownEvents;
     public UnityEvent selectTargetActiveEvents;
     public UnityEvent selectTargetUpEvents;
-
-    [Header("Rotate Target")]
-    public SteamVR_Action_Vector2 rotateTargetAction;
     public FloatEvent rotateTargetEvents;
-
-    [Header("Confirm Target")]
-    public SteamVR_Action_Boolean confirmTargetAction;
     public UnityEvent confirmTargetEvents;
-
-    [Header("Stop Robot")]
-    public SteamVR_Action_Boolean stopRobotAction;
     public UnityEvent stopRobotEvents;
-
-    [Header("Rotate Camera")]
-    public SteamVR_Action_Boolean centreCamAction;
-    public UnityEvent centreCamEvents;
-
-    public SteamVR_Action_Boolean turnCamLeftAction;
-    public UnityEvent turnCamLeftEvents;
-
-    public SteamVR_Action_Boolean turnCamRightAction;
-    public UnityEvent turnCamRightEvents;
-
 
 
     private void OnEnable()
     {
+        actionSet.Activate();
         selectTargetAction[inputSource].onStateDown += SelectTargetDown;
         selectTargetAction[inputSource].onState += SelectTargetActive;
         selectTargetAction[inputSource].onStateUp += SelectTargetUp;
         rotateTargetAction[inputSource].onAxis += RotateTarget;
         confirmTargetAction[inputSource].onStateDown += ConfirmTarget;
         stopRobotAction[inputSource].onStateDown += StopRobot;
-        centreCamAction[inputSource].onStateDown += CentreCam;
-        turnCamLeftAction[inputSource].onStateDown += TurnCamLeft;
-        turnCamRightAction[inputSource].onStateDown += TurnCamRight;
     }
 
 
@@ -63,10 +47,8 @@ public class VRBaseInputHandler : MonoBehaviour
         selectTargetAction[inputSource].onStateUp -= SelectTargetUp;
         rotateTargetAction[inputSource].onAxis -= RotateTarget;
         confirmTargetAction[inputSource].onStateDown -= ConfirmTarget;
-        centreCamAction[inputSource].onStateDown -= CentreCam;
         stopRobotAction[inputSource].onStateDown -= StopRobot;
-        turnCamLeftAction[inputSource].onStateDown -= TurnCamLeft;
-        turnCamRightAction[inputSource].onStateDown -= TurnCamRight;
+        actionSet.Deactivate();
     }
 
     private void SelectTargetDown(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
@@ -91,7 +73,7 @@ public class VRBaseInputHandler : MonoBehaviour
         float direction = -Mathf.Atan2(axis.y, axis.x);
         float directionChange = direction - directionLast;
 
-        if (Mathf.Abs(directionChange) < Mathf.PI/4) // && selectTargetAction[inputSource].state != true)
+        if (Mathf.Abs(directionChange) < Mathf.PI/4) 
         {
             rotateTargetEvents.Invoke(directionChange * Mathf.Rad2Deg * 0.5f);
         }
@@ -106,22 +88,6 @@ public class VRBaseInputHandler : MonoBehaviour
     private void StopRobot(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
     {
         stopRobotEvents.Invoke();
-    }
-
-    private void CentreCam(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
-    {
-        centreCamEvents.Invoke();
-    }
-
-
-    private void TurnCamLeft(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
-    {
-        turnCamLeftEvents.Invoke();
-    }
-
-    private void TurnCamRight(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
-    {
-        turnCamRightEvents.Invoke();
     }
 
     void Start()

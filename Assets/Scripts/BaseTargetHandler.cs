@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RosMessageTypes.MoveBase;
+using Unity.Robotics.ROSTCPConnector.ROSGeometry;
+using UnityEngine.Events;
 
 public class BaseTargetHandler : MonoBehaviour
 {
@@ -16,7 +19,8 @@ public class BaseTargetHandler : MonoBehaviour
     public GameObject targetIndicatorPrefab;
 
     [Header("Events")]
-    public TransformEvent publishTargetTransformEvents;
+    public RosMessageEvent publishTargetTransformEvents;
+    public UnityEvent stopRobotEvents;
 
 
     public void SetTargetOrientation()
@@ -48,7 +52,21 @@ public class BaseTargetHandler : MonoBehaviour
             Instantiate(targetIndicatorPrefab, transform.position, transform.rotation);
         }
 
-        publishTargetTransformEvents.Invoke(transform);
+        publishTargetTransformEvents.Invoke(CreateTargetMessage(transform));
+    }
+
+    public void StopRobot()
+    {
+        stopRobotEvents.Invoke();
+    }
+
+    public MoveBaseActionGoal CreateTargetMessage(Transform transform)
+    {
+        var goal = new MoveBaseActionGoal();
+        goal.goal.target_pose.header.frame_id = "map";
+        goal.goal.target_pose.pose.position = transform.position.To<FLU>();
+        goal.goal.target_pose.pose.orientation = transform.rotation.To<FLU>();
+        return goal;
     }
 
     public void MoveToBaseLink()

@@ -23,7 +23,7 @@ public class TrackRosTF : MonoBehaviour
     Vector3 positionOffset = new Vector3(0, 0, 0);
 
     [SerializeField]
-    float rotationOffset = 0;
+    Vector3 rotationOffset = new Vector3();
 
 
     GameObject objectToTrack = null;
@@ -42,16 +42,16 @@ public class TrackRosTF : MonoBehaviour
         }
     }
 
-    public void SetRotationOffset(float offsetNew)
+    public void SetHeadingOffset(float offsetNew)
     {
-        rotationOffset = (Mathf.Abs(offsetNew) < 150) ? offsetNew : rotationOffset;
+        rotationOffset.y = (Mathf.Abs(offsetNew) < 150) ? offsetNew : rotationOffset.y;
     }
 
-    public void ChangeRotationOffset(float turnAngle)
+    public void ChangeHeadingOffset(float turnAngle)
     {
-        float offsetNew = rotationOffset + turnAngle;
+        float offsetNew = rotationOffset.y + turnAngle;
 
-        rotationOffset = (Mathf.Abs(offsetNew) < 150) ? offsetNew : rotationOffset;
+        rotationOffset.y = (Mathf.Abs(offsetNew) < 150) ? offsetNew : rotationOffset.y;
     }
 
     // Update is called once per frame
@@ -61,12 +61,13 @@ public class TrackRosTF : MonoBehaviour
         {   
             if (trackPosition) 
             {
-                transform.position = objectToTrack.transform.position + positionOffset;
+                transform.position = objectToTrack.transform.position;
+                transform.Translate(positionOffset, Space.Self);
             } 
             if (trackRotation)
             {
                 transform.rotation = objectToTrack.transform.rotation;
-                transform.Rotate(Vector3.up, rotationOffset);
+                transform.Rotate(rotationOffset);
             }
             
         }

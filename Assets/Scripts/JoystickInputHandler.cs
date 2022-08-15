@@ -1,56 +1,116 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.Compression;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using RosMessageTypes.Sensor;
-using Unity.Robotics.ROSTCPConnector;
-using Valve.VR;
-using RosMessageTypes.Std;
-
 public class JoystickInputHandler : MonoBehaviour
 {
-    ROSConnection ros;
-    RosTopicState joyPublisher;
+    KeyboardInput inputActions;
 
-    public string joyTopic;
-     
+    [Header("Params")]
+    public float targetMoveSpeed = 0.1f;
 
-    void Start()
+    [Header("External Objects")]
+    public Transform baseLinkObject;
+    public Transform targetObject;
+
+    [Header("Events")]
+    public Vector3Event setTargetPositionEvents;
+
+    // Internal
+    bool moveTargetEnabled = false;
+    bool moveTargetVerticalEnabled = false;
+
+    // Start is called before the first frame update
+    void Awake()
     {
-        ros = ROSConnection.GetOrCreateInstance();
+        inputActions = new KeyboardInput();
+    }
 
-        joyPublisher = ros.RegisterPublisher<JoyMsg>(joyTopic);
+    private void OnEnable()
+    {
+        inputActions.Arm.Enable();
+
+        inputActions.Arm.MoveTargetHorizontalJoy.performed += MoveTargetHorizontalJoy_performed;
+        inputActions.Arm.MoveTargetHorizontalJoy.canceled += MoveTargetHorizontalJoy_canceled;
+        inputActions.Arm.MoveTargetVerticalJoy.performed += MoveTargetVerticalJoy_performed;
+        inputActions.Arm.MoveTargetVerticalJoy.canceled += MoveTargetVerticalJoy_canceled;
+    }
+
+
+    private void MoveTargetHorizontalJoy_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        moveTargetEnabled = false;
+    }
+
+    private void MoveTargetHorizontalJoy_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        
+        if(!moveTargetEnabled) StartCoroutine(MoveTargetCoroutine(obj));
+    }
+
+    IEnumerator MoveTargetCoroutine(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        moveTargetEnabled = true;
+        while (moveTargetEnabled)
+        {
+            Vector3 translation = new Vector3
+            {
+                x = obj.ReadValue<Vector2>().x * targetMoveSpeed * Time.deltaTime,
+                y = 0,
+                z = obj.ReadValue<Vector2>().y * targetMoveSpeed * Time.deltaTime,
+            };
+
+            Vector3 position = targetObject.position + baseLinkObject.TransformVector(translation);
+            setTargetPositionEvents.Invoke(position);
+
+            yield return null;
+        }
+
 
     }
 
-    void FixedUpdate()
+    private void MoveTargetVerticalJoy_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        var joyMsg = new JoyMsg();
-        joyMsg.axes = new float[8];
-        joyMsg.buttons = new int[11];
+        if (!moveTargetVerticalEnabled) StartCoroutine(MoveTargetVerticalCoroutine(obj));
+    }
 
-        joyMsg.axes[0] = -Gamepad.current.leftStick.ReadValue().x;
-        joyMsg.axes[1] = Gamepad.current.leftStick.ReadValue().y;
-        joyMsg.axes[2] = Gamepad.current.leftTrigger.ReadValue();
-        joyMsg.axes[3] = -Gamepad.current.rightStick.ReadValue().x;
-        joyMsg.axes[4] = Gamepad.current.rightStick.ReadValue().y;
-        joyMsg.axes[5] = Gamepad.current.rightTrigger.ReadValue();
-        joyMsg.axes[6] = -Gamepad.current.dpad.ReadValue().x;
-        joyMsg.axes[7] = Gamepad.current.dpad.ReadValue().y;
+    private IEnumerator MoveTargetVerticalCoroutine(InputAction.CallbackContext obj)
+    {
+        moveTargetVerticalEnabled = true;
+        while (moveTargetVerticalEnabled)
+        {
+            Vector3 translation = new Vector3
+            {
+                x = 0,
+                y = obj.ReadValue<float>() * targetMoveSpeed * Time.deltaTime,
+                z = 0
+            };
 
-        joyMsg.buttons[0] = (int)Gamepad.current.aButton.ReadValue();
-        joyMsg.buttons[1] = (int)Gamepad.current.bButton.ReadValue();
-        joyMsg.buttons[2] = (int)Gamepad.current.xButton.ReadValue();
-        joyMsg.buttons[3] = (int)Gamepad.current.yButton.ReadValue();
-        joyMsg.buttons[4] = (int)Gamepad.current.leftShoulder.ReadValue();
-        joyMsg.buttons[5] = (int)Gamepad.current.rightShoulder.ReadValue();
-        joyMsg.buttons[6] = (int)Gamepad.current.selectButton.ReadValue();
-        joyMsg.buttons[7] = (int)Gamepad.current.startButton.ReadValue();
-        joyMsg.buttons[8] = 0;
-        joyMsg.buttons[9] = (int)Gamepad.current.leftStickButton.ReadValue();
-        joyMsg.buttons[10] = (int)Gamepad.current.rightStickButton.ReadValue();
+            Vector3 position = targetObject.position + translation;
+            setTargetPositionEvents.Invoke(position);
 
-        joyPublisher.Publish(joyMsg);
+            yield return null;
+        }
+    }
+
+    private void MoveTargetVerticalJoy_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        moveTargetVerticalEnabled = false;
+    }
+
+    private void OnDisable()
+    {
+
+
+        inputActions.Arm.Disable();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }

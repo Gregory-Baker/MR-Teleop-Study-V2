@@ -56,5 +56,29 @@ namespace Valve.VR
                 return SteamVR_Actions.common_RadialMenu_CursorPosition;
             }
         }
+        
+        public virtual SteamVR_Action_Boolean Turn_Cam_Left
+        {
+            get
+            {
+                return SteamVR_Actions.common_Turn_Cam_Left;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean Turn_Cam_Right
+        {
+            get
+            {
+                return SteamVR_Actions.common_Turn_Cam_Right;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean Centre_Cam
+        {
+            get
+            {
+                return SteamVR_Actions.common_Centre_Cam;
+            }
+        }
     }
 }

@@ -21,6 +21,18 @@
       "type": "vector2"
     },
     {
+      "name": "/actions/Common/in/Turn Cam Left",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/Common/in/Turn Cam Right",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/Common/in/Centre Cam",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/Base/in/Select Target",
       "type": "boolean"
     },
@@ -37,22 +49,22 @@
       "type": "boolean"
     },
     {
-      "name": "/actions/Base/in/Turn_Cam_Left_90",
+      "name": "/actions/Arm/in/Move Target Enable",
       "type": "boolean"
     },
     {
-      "name": "/actions/Base/in/Turn_Cam_Right_90",
+      "name": "/actions/Arm/in/Confirm_Target",
       "type": "boolean"
     },
     {
-      "name": "/actions/Base/in/CentreCam",
+      "name": "/actions/Arm/in/Stop Arm",
       "type": "boolean"
     }
   ],
   "action_sets": [
     {
       "name": "/actions/Common",
-      "usage": "single"
+      "usage": "leftright"
     },
     {
       "name": "/actions/Base",

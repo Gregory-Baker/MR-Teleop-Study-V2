@@ -48,29 +48,5 @@ namespace Valve.VR
                 return SteamVR_Actions.base_Stop_Robot;
             }
         }
-        
-        public virtual SteamVR_Action_Boolean Turn_Cam_Left_90
-        {
-            get
-            {
-                return SteamVR_Actions.base_Turn_Cam_Left_90;
-            }
-        }
-        
-        public virtual SteamVR_Action_Boolean Turn_Cam_Right_90
-        {
-            get
-            {
-                return SteamVR_Actions.base_Turn_Cam_Right_90;
-            }
-        }
-        
-        public virtual SteamVR_Action_Boolean CentreCam
-        {
-            get
-            {
-                return SteamVR_Actions.base_CentreCam;
-            }
-        }
     }
 }

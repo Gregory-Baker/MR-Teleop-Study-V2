@@ -29,6 +29,8 @@ public class ArmTargetHandler : MonoBehaviour
     public RosMessageEvent armToHomeEvents;
     public RosMessageEvent pickObjectFullEvents;
     public RosMessageEvent placeObjectFullEvents;
+    public RosMessageEvent pickObjectBasicEvents;
+    public RosMessageEvent placeObjectBasicEvents;
     public UnityEvent stopArmEvents;
 
     [Header("Params")]
@@ -141,18 +143,25 @@ public class ArmTargetHandler : MonoBehaviour
         placeObjectFullEvents.Invoke(goal);
     }
 
+    // Moves to target position, then picks or places the barrel vertically down
     public void PickOrPlaceFull()
     {
-        if (gripper.state == GripperState.Open)
-        {
-            PickFull();
-        }
-        else
-        {
-            PlaceFull();
-        }
+        if (gripper.state == GripperState.Open) PickFull();
+        else PlaceFull();
     }
 
+    // Picks or places the barrel vertically down
+    public void PickOrPlaceBasic()
+    {
+        var goal = new PlaceObjectActionGoal();
+
+        if (gripper.state == GripperState.Open)
+            pickObjectBasicEvents.Invoke(goal);
+        else
+            placeObjectBasicEvents.Invoke(goal);
+    }
+
+    
     public void StopArm()
     {
         stopArmEvents.Invoke();

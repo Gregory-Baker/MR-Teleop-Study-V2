@@ -33,7 +33,11 @@
       "type": "boolean"
     },
     {
-      "name": "/actions/Common/in/NextTutorial",
+      "name": "/actions/Common/in/Next Tutorial",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/Common/in/Turn Robot To Cam",
       "type": "boolean"
     },
     {
@@ -58,6 +62,10 @@
     },
     {
       "name": "/actions/Base/in/MoveBackward",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/Base/in/TurnRobotToCam",
       "type": "boolean"
     },
     {

@@ -460,6 +460,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "PickPlaceBasic",
+                    "type": "Button",
+                    "id": "eb0a2b84-fd72-4d25-8aa8-af9e6f9f9205",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -603,6 +612,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "MoveTargetVerticalJoy",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6de27222-33d6-49c4-a4cd-8d15b1fd5a49",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PickPlaceBasic",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

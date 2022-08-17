@@ -482,6 +482,15 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PickPlaceBasic"",
+                    ""type"": ""Button"",
+                    ""id"": ""eb0a2b84-fd72-4d25-8aa8-af9e6f9f9205"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -627,6 +636,17 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                     ""action"": ""MoveTargetVerticalJoy"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6de27222-33d6-49c4-a4cd-8d15b1fd5a49"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PickPlaceBasic"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -661,6 +681,7 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
         m_Arm_MoveTargetVertical = m_Arm.FindAction("MoveTargetVertical", throwIfNotFound: true);
         m_Arm_MoveTargetHorizontalJoy = m_Arm.FindAction("MoveTargetHorizontalJoy", throwIfNotFound: true);
         m_Arm_MoveTargetVerticalJoy = m_Arm.FindAction("MoveTargetVerticalJoy", throwIfNotFound: true);
+        m_Arm_PickPlaceBasic = m_Arm.FindAction("PickPlaceBasic", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -862,6 +883,7 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Arm_MoveTargetVertical;
     private readonly InputAction m_Arm_MoveTargetHorizontalJoy;
     private readonly InputAction m_Arm_MoveTargetVerticalJoy;
+    private readonly InputAction m_Arm_PickPlaceBasic;
     public struct ArmActions
     {
         private @KeyboardInput m_Wrapper;
@@ -878,6 +900,7 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
         public InputAction @MoveTargetVertical => m_Wrapper.m_Arm_MoveTargetVertical;
         public InputAction @MoveTargetHorizontalJoy => m_Wrapper.m_Arm_MoveTargetHorizontalJoy;
         public InputAction @MoveTargetVerticalJoy => m_Wrapper.m_Arm_MoveTargetVerticalJoy;
+        public InputAction @PickPlaceBasic => m_Wrapper.m_Arm_PickPlaceBasic;
         public InputActionMap Get() { return m_Wrapper.m_Arm; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -923,6 +946,9 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                 @MoveTargetVerticalJoy.started -= m_Wrapper.m_ArmActionsCallbackInterface.OnMoveTargetVerticalJoy;
                 @MoveTargetVerticalJoy.performed -= m_Wrapper.m_ArmActionsCallbackInterface.OnMoveTargetVerticalJoy;
                 @MoveTargetVerticalJoy.canceled -= m_Wrapper.m_ArmActionsCallbackInterface.OnMoveTargetVerticalJoy;
+                @PickPlaceBasic.started -= m_Wrapper.m_ArmActionsCallbackInterface.OnPickPlaceBasic;
+                @PickPlaceBasic.performed -= m_Wrapper.m_ArmActionsCallbackInterface.OnPickPlaceBasic;
+                @PickPlaceBasic.canceled -= m_Wrapper.m_ArmActionsCallbackInterface.OnPickPlaceBasic;
             }
             m_Wrapper.m_ArmActionsCallbackInterface = instance;
             if (instance != null)
@@ -963,6 +989,9 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                 @MoveTargetVerticalJoy.started += instance.OnMoveTargetVerticalJoy;
                 @MoveTargetVerticalJoy.performed += instance.OnMoveTargetVerticalJoy;
                 @MoveTargetVerticalJoy.canceled += instance.OnMoveTargetVerticalJoy;
+                @PickPlaceBasic.started += instance.OnPickPlaceBasic;
+                @PickPlaceBasic.performed += instance.OnPickPlaceBasic;
+                @PickPlaceBasic.canceled += instance.OnPickPlaceBasic;
             }
         }
     }
@@ -997,5 +1026,6 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
         void OnMoveTargetVertical(InputAction.CallbackContext context);
         void OnMoveTargetHorizontalJoy(InputAction.CallbackContext context);
         void OnMoveTargetVerticalJoy(InputAction.CallbackContext context);
+        void OnPickPlaceBasic(InputAction.CallbackContext context);
     }
 }

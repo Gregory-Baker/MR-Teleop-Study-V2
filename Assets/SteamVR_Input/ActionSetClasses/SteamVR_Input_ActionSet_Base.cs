@@ -64,5 +64,13 @@ namespace Valve.VR
                 return SteamVR_Actions.base_MoveBackward;
             }
         }
+        
+        public virtual SteamVR_Action_Boolean TurnRobotToCam
+        {
+            get
+            {
+                return SteamVR_Actions.base_TurnRobotToCam;
+            }
+        }
     }
 }

@@ -17,6 +17,7 @@ public class KeyboardArmInputHandler : MonoBehaviour
     public UnityEvent confirmTargetEvents;
     public UnityEvent pickObjectEvents;
     public UnityEvent placeObjectEvents;
+    public UnityEvent pickPlaceObjectBasicEvents;
     public UnityEvent stopArmEvents;
     public UnityEvent armToHomeEvents;
     public UnityEvent openGripperEvents;
@@ -42,6 +43,8 @@ public class KeyboardArmInputHandler : MonoBehaviour
         inputActions.Arm.ConfirmTarget.performed += ConfirmTarget_performed;
         inputActions.Arm.PickObject.performed += PickObject_performed;
         inputActions.Arm.PlaceObject.performed += PlaceObject_performed;
+        inputActions.Arm.PickPlaceBasic.performed += PickPlaceBasic_performed;
+
         inputActions.Arm.StopArm.performed += StopArm_performed;
         inputActions.Arm.OpenGripper.performed += OpenGripper_performed;
         inputActions.Arm.CloseGripper.performed += CloseGripper_performed;
@@ -53,11 +56,14 @@ public class KeyboardArmInputHandler : MonoBehaviour
         inputActions.Arm.MoveTargetVertical.performed += MoveTargetVertical_performed;
     }
 
+
     private void OnDisable()
     {
         inputActions.Arm.ConfirmTarget.performed -= ConfirmTarget_performed;
         inputActions.Arm.PickObject.performed -= PickObject_performed;
         inputActions.Arm.PlaceObject.performed -= PlaceObject_performed;
+        inputActions.Arm.PickPlaceBasic.performed += PickPlaceBasic_performed;
+
         inputActions.Arm.StopArm.performed -= StopArm_performed;
         inputActions.Arm.OpenGripper.performed -= OpenGripper_performed;
         inputActions.Arm.CloseGripper.performed -= CloseGripper_performed;
@@ -89,6 +95,11 @@ public class KeyboardArmInputHandler : MonoBehaviour
     private void PickObject_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         pickObjectEvents.Invoke();
+    }
+
+    private void PickPlaceBasic_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        pickPlaceObjectBasicEvents.Invoke();
     }
 
     private void OpenGripper_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)

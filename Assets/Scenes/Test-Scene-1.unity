@@ -181,6 +181,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6083913633500750932, guid: 32531bd8c4bc1d048b780f30c5e8b4d3, type: 3}
+      propertyPath: m_Color.b
+      value: 0.007030964
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083913633500750932, guid: 32531bd8c4bc1d048b780f30c5e8b4d3, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083913633500750932, guid: 32531bd8c4bc1d048b780f30c5e8b4d3, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6083913633500750933, guid: 32531bd8c4bc1d048b780f30c5e8b4d3, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.16
@@ -351,6 +363,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &117374303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 117374304}
+  - component: {fileID: 117374305}
+  m_Layer: 0
+  m_Name: Place Action Basic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &117374304
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117374303}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 855859294}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &117374305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117374303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6508b10142bc24d4293a55be7baf8645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionNamespace: /kinova_place_object_server
+  actionName: kinova_custom_actions/PlaceObject
+  resultEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  feedbackEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  statusEvents:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &120132381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -519,6 +585,7 @@ MonoBehaviour:
   tiltOffset: 15
   panAngle: 0
   tiltAngle: 0
+  baseLinkObject: {fileID: 9759391}
 --- !u!4 &157535202
 Transform:
   m_ObjectHideFlags: 0
@@ -831,6 +898,21 @@ MonoBehaviour:
       - m_Target: {fileID: 686004658}
         m_TargetAssemblyTypeName: ArmTargetHandler, Assembly-CSharp
         m_MethodName: PlaceFull
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  pickPlaceObjectBasicEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 686004658}
+        m_TargetAssemblyTypeName: ArmTargetHandler, Assembly-CSharp
+        m_MethodName: PickOrPlaceBasic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1509,7 +1591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &418942342
 Transform:
   m_ObjectHideFlags: 0
@@ -1537,7 +1619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionNamespace: /turn_robot_server
-  actionName: move_base_msgs/MoveBase
+  actionName: kinova_custom_actions/TurnAngle
   resultEvents:
     m_PersistentCalls:
       m_Calls: []
@@ -2179,6 +2261,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  pickObjectBasicEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1040350150}
+        m_TargetAssemblyTypeName: RosActionHandler, Assembly-CSharp
+        m_MethodName: PublishActionGoal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  placeObjectBasicEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 117374305}
+        m_TargetAssemblyTypeName: RosActionHandler, Assembly-CSharp
+        m_MethodName: PublishActionGoal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   stopArmEvents:
     m_PersistentCalls:
       m_Calls:
@@ -2546,7 +2658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputSource: 0
   nextTutorialAction:
-    actionPath: /actions/Common/in/NextTutorial
+    actionPath: /actions/Common/in/Next Tutorial
     needsReinit: 0
   nextTutorialEvents:
     m_PersistentCalls:
@@ -2889,6 +3001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 826408801}
   - component: {fileID: 826408802}
+  - component: {fileID: 826408803}
   m_Layer: 0
   m_Name: Recorders
   m_TagString: Untagged
@@ -2923,6 +3036,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: ac256fdf6c5f47646a26fc5f9d56d47a, type: 2}
+  folder: C:/Users/g-baker-admin/Documents/MR_Waypoint_Experiment_Data_v2/
+  recording: 0
+--- !u!114 &826408803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826408800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab04e564bc89a0942b3d66c50cb8cbb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: ac256fdf6c5f47646a26fc5f9d56d47a, type: 2}
+  zedManager: {fileID: 978424067}
+  folder: C:/Users/g-baker-admin/Documents/MR_Waypoint_Experiment_Data_v2/
   recording: 0
 --- !u!1 &836094636
 GameObject:
@@ -3105,6 +3235,8 @@ Transform:
   m_Children:
   - {fileID: 283693393}
   - {fileID: 580828848}
+  - {fileID: 1040350149}
+  - {fileID: 117374304}
   - {fileID: 1612487881}
   m_Father: {fileID: 74456010}
   m_RootOrder: 2
@@ -3173,6 +3305,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4309805032874704, guid: e13ee7e0790c7d243b7aa67fe604acac, type: 3}
   m_PrefabInstance: {fileID: 1195593489}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &978424067 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114711245158774928, guid: e13ee7e0790c7d243b7aa67fe604acac, type: 3}
+  m_PrefabInstance: {fileID: 1195593489}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978424065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b2a3ff7b847ca4490808f4c0432cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &987803276
 GameObject:
   m_ObjectHideFlags: 0
@@ -3418,6 +3561,60 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1040350148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1040350149}
+  - component: {fileID: 1040350150}
+  m_Layer: 0
+  m_Name: Pick Action Basic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1040350149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040350148}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 855859294}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1040350150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040350148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6508b10142bc24d4293a55be7baf8645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionNamespace: /kinova_pick_object_server
+  actionName: kinova_custom_actions/PlaceObject
+  resultEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  feedbackEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  statusEvents:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1109517864
 GameObject:
   m_ObjectHideFlags: 0
@@ -4875,6 +5072,9 @@ MonoBehaviour:
   turnCamRightAction:
     actionPath: /actions/Common/in/Turn Cam Right
     needsReinit: 0
+  turnRobotToCamAction:
+    actionPath: 
+    needsReinit: 1
   changeControlModeEvents:
     m_PersistentCalls:
       m_Calls:
@@ -4963,6 +5163,21 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TrackRosTF, Assembly-CSharp
         m_MethodName: ChangeHeadingOffset
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  turnRobotToCamEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6083913633075965675}
+        m_TargetAssemblyTypeName: BaseTargetHandler, Assembly-CSharp
+        m_MethodName: TurnRobotToCam
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5480,7 +5695,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 855859294}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1612487882
 MonoBehaviour:
@@ -5957,7 +6172,19 @@ MonoBehaviour:
   actionName: move_base_msgs/MoveBase
   resultEvents:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6083913633075965675}
+        m_TargetAssemblyTypeName: BaseTargetHandler, Assembly-CSharp
+        m_MethodName: UpdateMoveBaseState
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   feedbackEvents:
     m_PersistentCalls:
       m_Calls: []
@@ -7043,7 +7270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6083913632962865283, guid: 32531bd8c4bc1d048b780f30c5e8b4d3, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6083913632962865285, guid: 32531bd8c4bc1d048b780f30c5e8b4d3, type: 3}
       propertyPath: m_Color.b
@@ -7115,7 +7342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9196363178376675712, guid: 32531bd8c4bc1d048b780f30c5e8b4d3, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32531bd8c4bc1d048b780f30c5e8b4d3, type: 3}
@@ -7140,6 +7367,7 @@ MonoBehaviour:
   baseLinkTransform: {fileID: 9759391}
   targetIndicator: {fileID: 997344081}
   targetIndicatorPrefab: {fileID: 599950266981961125, guid: 2bfd20858ce694d41af714eccb13a2a8, type: 3}
+  panTiltHandler: {fileID: 157535201}
   publishTargetTransformEvents:
     m_PersistentCalls:
       m_Calls:
@@ -7170,6 +7398,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 418942343}
+        m_TargetAssemblyTypeName: RosActionHandler, Assembly-CSharp
+        m_MethodName: CancelActionGoal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 938396026}
+        m_TargetAssemblyTypeName: RosActionHandler, Assembly-CSharp
+        m_MethodName: CancelActionGoal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   moveDistanceEvents:
     m_PersistentCalls:
       m_Calls:
@@ -7185,6 +7437,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  turnRobotEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 418942343}
+        m_TargetAssemblyTypeName: RosActionHandler, Assembly-CSharp
+        m_MethodName: PublishActionGoal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  moveBaseActive: 0
 --- !u!4 &6083913633075965676 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9104141794876720759, guid: 32531bd8c4bc1d048b780f30c5e8b4d3, type: 3}

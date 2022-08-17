@@ -19,11 +19,20 @@ public class BaseTargetHandler : MonoBehaviour
     public GameObject targetIndicator;
     public GameObject targetIndicatorPrefab;
 
+    public PanTiltHandler panTiltHandler;
+
     [Header("Events")]
     public RosMessageEvent publishTargetTransformEvents;
     public UnityEvent stopRobotEvents;
     public RosMessageEvent moveDistanceEvents;
+    public RosMessageEvent turnRobotEvents;
 
+    [Header("State")]
+    public bool moveBaseActive;
+
+    // Internal
+    float baseHeadingPrevious;
+    float targetDistance;
 
     public void SetTargetOrientation()
     {
@@ -54,6 +63,7 @@ public class BaseTargetHandler : MonoBehaviour
             Instantiate(targetIndicatorPrefab, transform.position, transform.rotation);
         }
 
+        moveBaseActive = true;
         publishTargetTransformEvents.Invoke(CreateTargetMessage(transform));
     }
 
@@ -73,20 +83,57 @@ public class BaseTargetHandler : MonoBehaviour
 
     public void MoveToBaseLink()
     {
+        targetDistance = 0;
         transform.SetPositionAndRotation(baseLinkTransform.position, baseLinkTransform.rotation);
     }
 
     public void MoveTargetDistance(float distance)
     {
         var translation = new Vector3(0, 0, distance);
+        targetDistance += distance;
         transform.Translate(translation, Space.Self);
     }
 
     public void MoveRobotDistance(float distance)
     {
-        var goal = new MoveDistanceActionGoal();
-        goal.goal.move_distance = distance;
-        moveDistanceEvents.Invoke(goal);
+        if (!moveBaseActive)
+        {
+            var goal = new MoveDistanceActionGoal();
+            goal.goal.move_distance = distance;
+            moveDistanceEvents.Invoke(goal);
+        }
+    }
+
+    public void TurnRobotToCam()
+    {
+        if (!moveBaseActive && panTiltHandler.panOffset != 0)
+        {
+            var goal = new TurnAngleActionGoal();
+            goal.goal.turn_angle = -panTiltHandler.panAngle * Mathf.Deg2Rad;
+            baseHeadingPrevious = baseLinkTransform.eulerAngles.y;
+
+            turnRobotEvents.Invoke(goal);
+            StartCoroutine(TurnCamWithRobot());
+        }
+
+    }
+
+    private IEnumerator TurnCamWithRobot()
+    {
+        while (Mathf.Abs(panTiltHandler.panAngle) > 1)
+        {
+            float baseHeadingDiff = baseLinkTransform.eulerAngles.y - baseHeadingPrevious;
+            if (baseHeadingDiff > 180) baseHeadingDiff -= 360;
+            if (baseHeadingDiff < -180) baseHeadingDiff += 360;
+            panTiltHandler.panAngle -= baseHeadingDiff;
+            yield return null;
+        }
+        panTiltHandler.panOffset = 0;
+    }
+
+    public void UpdateMoveBaseState(Unity.Robotics.ROSTCPConnector.MessageGeneration.Message result)
+    {
+        moveBaseActive = false;
     }
 
     private void Update()

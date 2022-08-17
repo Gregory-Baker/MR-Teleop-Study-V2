@@ -81,11 +81,19 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Boolean NextTutorial
+        public virtual SteamVR_Action_Boolean Next_Tutorial
         {
             get
             {
-                return SteamVR_Actions.common_NextTutorial;
+                return SteamVR_Actions.common_Next_Tutorial;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean Turn_Robot_To_Cam
+        {
+            get
+            {
+                return SteamVR_Actions.common_Turn_Robot_To_Cam;
             }
         }
     }

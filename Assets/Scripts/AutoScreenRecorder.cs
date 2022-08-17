@@ -9,6 +9,7 @@ public class AutoScreenRecorder : MonoBehaviour
 {
     public ExperimentSettings settings;
 
+    public string folder;
     string participantID;
     string control;
     string ui;
@@ -44,7 +45,7 @@ public class AutoScreenRecorder : MonoBehaviour
                 OutputHeight = 720
             };
 
-            string folder = "C:/Users/g-baker-admin/Documents/MR_Waypoint_Experiment_Data_v2/";
+            
             string datetime = DateTime.Now.Date.Year + "_" + DateTime.Now.Date.Month + "_" + DateTime.Now.Date.Day + "-" + DateTime.Now.TimeOfDay.Hours + "_" + DateTime.Now.TimeOfDay.Minutes + "_" + DateTime.Now.TimeOfDay.Seconds;
             string outfile = folder + "id_" + participantID + "/" + participantID + "_" + control + "_" + ui + "_" + datetime;
 

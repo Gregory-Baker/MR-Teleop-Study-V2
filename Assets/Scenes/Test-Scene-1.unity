@@ -581,11 +581,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackHead: 1
+  fixHeading: 0
+  panOffsetStart: 0
+  tiltOffsetStart: 15
   panOffset: 0
-  tiltOffset: 15
+  tiltOffset: 0
   panAngle: 0
   tiltAngle: 0
-  baseLinkObject: {fileID: 9759391}
+  baseLinkTransform: {fileID: 9759391}
+  baseTargetHandler: {fileID: 6083913633075965675}
+  turnCamEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1323250843}
+        m_TargetAssemblyTypeName: TrackRosTF, Assembly-CSharp
+        m_MethodName: SetHeadingOffset
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &157535202
 Transform:
   m_ObjectHideFlags: 0
@@ -2019,7 +2038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1795562263255876, guid: 76db3eb81fd21ae45bab5204e324ae42, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: MainCamera
       objectReference: {fileID: 0}
     - target: {fileID: 4329734432191940, guid: 76db3eb81fd21ae45bab5204e324ae42, type: 3}
       propertyPath: m_RootOrder
@@ -2110,6 +2129,88 @@ MonoBehaviour:
   trackRotation: 1
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
+--- !u!1 &647098174
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 647098175}
+  - component: {fileID: 647098176}
+  m_Layer: 0
+  m_Name: Arrow Front Minimap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &647098175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647098174}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.02, z: 0.579}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.0010000002}
+  m_Children: []
+  m_Father: {fileID: 6083913633075965676}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!212 &647098176
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647098174}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 943f730615bce93439d830b436cc50a2, type: 3}
+  m_Color: {r: 1, g: 0.96559095, b: 0, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.45, y: 0.525}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &672131685 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4209643103528512567, guid: bbefc0917b99bc24eb02feadc55673d1, type: 3}
@@ -2319,6 +2420,30 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1612487882}
+        m_TargetAssemblyTypeName: RosActionHandler, Assembly-CSharp
+        m_MethodName: CancelActionGoal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1040350150}
+        m_TargetAssemblyTypeName: RosActionHandler, Assembly-CSharp
+        m_MethodName: CancelActionGoal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 117374305}
         m_TargetAssemblyTypeName: RosActionHandler, Assembly-CSharp
         m_MethodName: CancelActionGoal
         m_Mode: 1
@@ -2756,6 +2881,18 @@ MonoBehaviour:
       - m_Target: {fileID: 157535201}
         m_TargetAssemblyTypeName: PanTiltHandler, Assembly-CSharp
         m_MethodName: CentreCameraPan
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 157535201}
+        m_TargetAssemblyTypeName: PanTiltHandler, Assembly-CSharp
+        m_MethodName: CentreCameraTilt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3501,7 +3638,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85fd6c545690dd64bb207dad31c2e1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTurnAngle: 15
+  targetTurnAngle: 10
+  targetMoveSpeed: 0.2
+  turnCamSpeed: 20
   targetObject: {fileID: 6083913633075965674}
   zedLeftCamera: {fileID: 1188500094}
   rotateTargetEvents:
@@ -3552,6 +3691,105 @@ MonoBehaviour:
       - m_Target: {fileID: 6083913633075965675}
         m_TargetAssemblyTypeName: BaseTargetHandler, Assembly-CSharp
         m_MethodName: MoveToBaseLink
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6083913633075965675}
+        m_TargetAssemblyTypeName: BaseTargetHandler, Assembly-CSharp
+        m_MethodName: ConfirmTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  moveTargetEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6083913633075965675}
+        m_TargetAssemblyTypeName: BaseTargetHandler, Assembly-CSharp
+        m_MethodName: MoveTargetDistance
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  moveRobotToTargetEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6083913633075965675}
+        m_TargetAssemblyTypeName: BaseTargetHandler, Assembly-CSharp
+        m_MethodName: MoveRobotToTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  turnCamAndTargetStartedEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6083913633075965675}
+        m_TargetAssemblyTypeName: BaseTargetHandler, Assembly-CSharp
+        m_MethodName: TurnTargetToCam
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  turnCamAndTargetEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 157535201}
+        m_TargetAssemblyTypeName: PanTiltHandler, Assembly-CSharp
+        m_MethodName: TurnCam
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6083913633075965675}
+        m_TargetAssemblyTypeName: BaseTargetHandler, Assembly-CSharp
+        m_MethodName: TurnTarget
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  turnRobotEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6083913633075965675}
+        m_TargetAssemblyTypeName: BaseTargetHandler, Assembly-CSharp
+        m_MethodName: TurnRobotToCam
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3739,6 +3977,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: MainCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 1352114948813630, guid: e13ee7e0790c7d243b7aa67fe604acac, type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 1603769914748404, guid: e13ee7e0790c7d243b7aa67fe604acac, type: 3}
       propertyPath: m_Name
       value: ZED_Rig_Stereo
@@ -3869,6 +4111,7 @@ MonoBehaviour:
   armOnlyObjects:
   - {fileID: 312253167}
   - {fileID: 306204824}
+  - {fileID: 228667847}
   baseControlEvents:
     m_PersistentCalls:
       m_Calls:
@@ -4774,6 +5017,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1396884533}
+  - component: {fileID: 1396884536}
   - component: {fileID: 1396884534}
   - component: {fileID: 1396884535}
   m_Layer: 0
@@ -4804,12 +5048,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1396884532}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02b3afe508389ae4cbb2e96834afd0f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c823b3e9cb6994469d37b42c481ee63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   joyTopic: /joy_teleop_desktop/joy
+  controlHandler: {fileID: 1206456667}
+  rightShoulderVal: 0
 --- !u!114 &1396884535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4822,7 +5068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b376a048d74c4e468e3464672091e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetMoveSpeed: 0.3
+  targetMoveSpeed: 0.2
   baseLinkObject: {fileID: 9759391}
   targetObject: {fileID: 1984235752}
   setTargetPositionEvents:
@@ -4855,6 +5101,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1396884536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396884532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b3afe508389ae4cbb2e96834afd0f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joyTopic: /joy_teleop_desktop/joy
 --- !u!1 &1417923304
 GameObject:
   m_ObjectHideFlags: 0
@@ -5073,8 +5332,8 @@ MonoBehaviour:
     actionPath: /actions/Common/in/Turn Cam Right
     needsReinit: 0
   turnRobotToCamAction:
-    actionPath: 
-    needsReinit: 1
+    actionPath: /actions/Common/in/Turn Robot To Cam
+    needsReinit: 0
   changeControlModeEvents:
     m_PersistentCalls:
       m_Calls:
@@ -5132,36 +5391,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1323250843}
-        m_TargetAssemblyTypeName: TrackRosTF, Assembly-CSharp
-        m_MethodName: ChangeHeadingOffset
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   turnCamRightEvents:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 157535201}
         m_TargetAssemblyTypeName: PanTiltHandler, Assembly-CSharp
         m_MethodName: TurnCam
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1323250843}
-        m_TargetAssemblyTypeName: TrackRosTF, Assembly-CSharp
-        m_MethodName: ChangeHeadingOffset
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5582,6 +5817,21 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: BaseTargetHandler, Assembly-CSharp
         m_MethodName: MoveRobotDistance
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  moveRobotToTargetEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6083913633075965675}
+        m_TargetAssemblyTypeName: BaseTargetHandler, Assembly-CSharp
+        m_MethodName: MoveRobotToTarget
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7269,7 +7519,7 @@ PrefabInstance:
       value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6083913632962865283, guid: 32531bd8c4bc1d048b780f30c5e8b4d3, type: 3}
-      propertyPath: m_Layer
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6083913632962865285, guid: 32531bd8c4bc1d048b780f30c5e8b4d3, type: 3}
@@ -7342,7 +7592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9196363178376675712, guid: 32531bd8c4bc1d048b780f30c5e8b4d3, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32531bd8c4bc1d048b780f30c5e8b4d3, type: 3}

@@ -30,6 +30,7 @@ public class VRBaseInputHandler : MonoBehaviour
     public UnityEvent stopRobotEvents;
     public FloatEvent moveTargetEvents;
     public FloatEvent moveRobotEvents;
+    public UnityEvent moveRobotToTargetEvents;
 
     [Header("Params")]
     public float targetMoveSpeed = 0.2f;
@@ -70,27 +71,24 @@ public class VRBaseInputHandler : MonoBehaviour
 
     private void MoveRobotStarted(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
     {
-        targetDistance = 0;
         stopRobotEvents.Invoke();
     }
 
     private void MoveTargetForward(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
     {
         float distance = targetMoveSpeed * Time.deltaTime;
-        targetDistance += distance;
         moveTargetEvents.Invoke(distance);
     }
 
     private void MoveTargetBackward(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
     {
         float distance = -targetMoveSpeed * Time.deltaTime;
-        targetDistance += distance;
         moveTargetEvents.Invoke(distance);
     }
 
     private void MoveRobotEnded(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
     {
-        moveRobotEvents.Invoke(targetDistance);
+        moveRobotToTargetEvents.Invoke();
     }
 
     private void SelectTargetDown(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)

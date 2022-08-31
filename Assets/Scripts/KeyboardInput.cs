@@ -219,6 +219,17 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""f5cb5f9f-913e-4339-a277-be0c0651dbc6"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CentreCam"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""6a616342-b4fe-4d37-8181-59234a03515c"",
                     ""path"": ""<Keyboard>/tab"",
                     ""interactions"": """",
@@ -300,6 +311,24 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RobotForwards"",
+                    ""type"": ""Button"",
+                    ""id"": ""f3cb5de1-8957-4355-8ba1-a276b2e52dd3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TurnTargetOnTheSpot"",
+                    ""type"": ""Button"",
+                    ""id"": ""29bb0b14-7975-4bad-b6bf-67e8af193c7d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -368,6 +397,72 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                     ""action"": ""StopRobot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""78014852-6054-44a3-84b6-c7540cda1a3c"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RobotForwards"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""d2f08805-c9be-4300-a340-741b8355f64c"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RobotForwards"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""97a0f80a-287e-47c9-9d6e-7830b30107c5"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RobotForwards"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""f53878ab-0eff-49ad-801d-d811c4bc79c5"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnTargetOnTheSpot"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""a601a5b3-e3a7-4396-aca1-8ac9e032d630"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnTargetOnTheSpot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""c45d3ca0-2d60-4891-909c-ec0a09837825"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TurnTargetOnTheSpot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -667,6 +762,8 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
         m_Base_TargetPosition = m_Base.FindAction("TargetPosition", throwIfNotFound: true);
         m_Base_TargetRotation = m_Base.FindAction("TargetRotation", throwIfNotFound: true);
         m_Base_StopRobot = m_Base.FindAction("StopRobot", throwIfNotFound: true);
+        m_Base_RobotForwards = m_Base.FindAction("RobotForwards", throwIfNotFound: true);
+        m_Base_TurnTargetOnTheSpot = m_Base.FindAction("TurnTargetOnTheSpot", throwIfNotFound: true);
         // Arm
         m_Arm = asset.FindActionMap("Arm", throwIfNotFound: true);
         m_Arm_ConfirmTarget = m_Arm.FindAction("ConfirmTarget", throwIfNotFound: true);
@@ -811,6 +908,8 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Base_TargetPosition;
     private readonly InputAction m_Base_TargetRotation;
     private readonly InputAction m_Base_StopRobot;
+    private readonly InputAction m_Base_RobotForwards;
+    private readonly InputAction m_Base_TurnTargetOnTheSpot;
     public struct BaseActions
     {
         private @KeyboardInput m_Wrapper;
@@ -820,6 +919,8 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
         public InputAction @TargetPosition => m_Wrapper.m_Base_TargetPosition;
         public InputAction @TargetRotation => m_Wrapper.m_Base_TargetRotation;
         public InputAction @StopRobot => m_Wrapper.m_Base_StopRobot;
+        public InputAction @RobotForwards => m_Wrapper.m_Base_RobotForwards;
+        public InputAction @TurnTargetOnTheSpot => m_Wrapper.m_Base_TurnTargetOnTheSpot;
         public InputActionMap Get() { return m_Wrapper.m_Base; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -844,6 +945,12 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                 @StopRobot.started -= m_Wrapper.m_BaseActionsCallbackInterface.OnStopRobot;
                 @StopRobot.performed -= m_Wrapper.m_BaseActionsCallbackInterface.OnStopRobot;
                 @StopRobot.canceled -= m_Wrapper.m_BaseActionsCallbackInterface.OnStopRobot;
+                @RobotForwards.started -= m_Wrapper.m_BaseActionsCallbackInterface.OnRobotForwards;
+                @RobotForwards.performed -= m_Wrapper.m_BaseActionsCallbackInterface.OnRobotForwards;
+                @RobotForwards.canceled -= m_Wrapper.m_BaseActionsCallbackInterface.OnRobotForwards;
+                @TurnTargetOnTheSpot.started -= m_Wrapper.m_BaseActionsCallbackInterface.OnTurnTargetOnTheSpot;
+                @TurnTargetOnTheSpot.performed -= m_Wrapper.m_BaseActionsCallbackInterface.OnTurnTargetOnTheSpot;
+                @TurnTargetOnTheSpot.canceled -= m_Wrapper.m_BaseActionsCallbackInterface.OnTurnTargetOnTheSpot;
             }
             m_Wrapper.m_BaseActionsCallbackInterface = instance;
             if (instance != null)
@@ -863,6 +970,12 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
                 @StopRobot.started += instance.OnStopRobot;
                 @StopRobot.performed += instance.OnStopRobot;
                 @StopRobot.canceled += instance.OnStopRobot;
+                @RobotForwards.started += instance.OnRobotForwards;
+                @RobotForwards.performed += instance.OnRobotForwards;
+                @RobotForwards.canceled += instance.OnRobotForwards;
+                @TurnTargetOnTheSpot.started += instance.OnTurnTargetOnTheSpot;
+                @TurnTargetOnTheSpot.performed += instance.OnTurnTargetOnTheSpot;
+                @TurnTargetOnTheSpot.canceled += instance.OnTurnTargetOnTheSpot;
             }
         }
     }
@@ -1011,6 +1124,8 @@ public partial class @KeyboardInput : IInputActionCollection2, IDisposable
         void OnTargetPosition(InputAction.CallbackContext context);
         void OnTargetRotation(InputAction.CallbackContext context);
         void OnStopRobot(InputAction.CallbackContext context);
+        void OnRobotForwards(InputAction.CallbackContext context);
+        void OnTurnTargetOnTheSpot(InputAction.CallbackContext context);
     }
     public interface IArmActions
     {

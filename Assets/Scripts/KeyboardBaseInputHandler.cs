@@ -10,7 +10,9 @@ public class KeyboardBaseInputHandler : MonoBehaviour
 {
 
     [Header("Params")]
-    public float targetTurnAngle = 10;
+    public float targetTurnAngle = 5;
+    public float targetMoveSpeed = 0.2f;
+    public float turnCamSpeed = 2f;
 
     [Header("External Objects")]
     public GameObject targetObject;
@@ -20,13 +22,20 @@ public class KeyboardBaseInputHandler : MonoBehaviour
     public FloatEvent rotateTargetEvents;
     public UnityEvent confirmTargetEvents;
     public UnityEvent stopRobotEvents;
+    public FloatEvent moveTargetEvents;
+    public UnityEvent moveRobotToTargetEvents;
+    public UnityEvent turnCamAndTargetStartedEvents;
+    public FloatEvent turnCamAndTargetEvents;
+    public UnityEvent turnRobotEvents;
 
 
     // Internal Parameters
     sl.ZEDCamera zedCamera;
     KeyboardInput inputActions;
     bool setTargetEnabled = false;
-    
+    bool moveTargetEnabled = false;
+    bool turnTargetEnabled = false;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -49,7 +58,14 @@ public class KeyboardBaseInputHandler : MonoBehaviour
         inputActions.Base.ConfirmTarget.performed += ConfirmTargetPosition;
 
         inputActions.Base.StopRobot.performed += StopRobot;
+
+        inputActions.Base.RobotForwards.performed += RobotForwards_performed;
+        inputActions.Base.RobotForwards.canceled += RobotForwards_canceled;
+
+        inputActions.Base.TurnTargetOnTheSpot.performed += TurnTargetOnTheSpot_performed;
+        inputActions.Base.TurnTargetOnTheSpot.canceled += TurnTargetOnTheSpot_canceled;
     }
+
 
     private void OnDisable()
     {
@@ -63,6 +79,7 @@ public class KeyboardBaseInputHandler : MonoBehaviour
 
         inputActions.Base.StopRobot.performed -= StopRobot;
 
+        inputActions.Base.RobotForwards.performed -= RobotForwards_performed;
 
         inputActions.Base.Disable();
     }
@@ -99,6 +116,30 @@ public class KeyboardBaseInputHandler : MonoBehaviour
         }
     }
 
+    private void RobotForwards_performed(InputAction.CallbackContext obj)
+    {
+        stopRobotEvents.Invoke();
+        moveTargetEnabled = true;
+        StartCoroutine(MoveTargetForwards(obj));
+    }
+
+    private IEnumerator MoveTargetForwards(InputAction.CallbackContext obj)
+    {
+        while (moveTargetEnabled)
+        {
+            float distance = obj.ReadValue<float>() * targetMoveSpeed * Time.deltaTime;
+            moveTargetEvents.Invoke(distance);
+            yield return null;
+        }
+    }
+
+    private void RobotForwards_canceled(InputAction.CallbackContext obj)
+    {
+        moveTargetEnabled = false;
+        moveRobotToTargetEvents.Invoke();
+    }
+
+
     private void RotateTarget(InputAction.CallbackContext obj)
     {
         float turnAngle = Mathf.Sign(obj.ReadValue<float>()) * targetTurnAngle;
@@ -113,6 +154,29 @@ public class KeyboardBaseInputHandler : MonoBehaviour
     private void StopRobot(InputAction.CallbackContext obj)
     {
         stopRobotEvents.Invoke();
+    }
+
+    private void TurnTargetOnTheSpot_performed(InputAction.CallbackContext obj)
+    {
+        //stopRobotEvents.Invoke();
+        turnCamAndTargetStartedEvents.Invoke();
+        turnTargetEnabled = true;
+        StartCoroutine(TurnCamAndTargetCoroutine(obj));
+    }
+
+    private IEnumerator TurnCamAndTargetCoroutine(InputAction.CallbackContext obj)
+    {
+        while (turnTargetEnabled)
+        {
+            turnCamAndTargetEvents.Invoke(obj.ReadValue<float>() * turnCamSpeed * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+    private void TurnTargetOnTheSpot_canceled(InputAction.CallbackContext obj)
+    {
+        turnTargetEnabled = false;
+        turnRobotEvents.Invoke();
     }
 
 

@@ -32,7 +32,6 @@ public class BaseTargetHandler : MonoBehaviour
 
     // Internal
     float baseHeadingPrevious;
-    float targetDistance;
 
     public void SetTargetOrientation()
     {
@@ -40,7 +39,14 @@ public class BaseTargetHandler : MonoBehaviour
         if (baseLinkToTarget.magnitude > 0.1)
             transform.rotation = Quaternion.LookRotation(baseLinkToTarget);
     }
-    
+
+    public void TurnTargetToCam()
+    {
+        var angles = baseLinkTransform.rotation.eulerAngles + Vector3.up * panTiltHandler.panOffset;
+        var quat = Quaternion.Euler(angles);
+        transform.SetPositionAndRotation(baseLinkTransform.position, quat);
+    }
+
     public void TurnTarget(float rotationAngle)
     {
         transform.Rotate(Vector3.up, rotationAngle);
@@ -50,6 +56,7 @@ public class BaseTargetHandler : MonoBehaviour
     {
         transform.position = worldPosition;
     }
+
 
     public void ConfirmTarget ()
     {
@@ -62,13 +69,14 @@ public class BaseTargetHandler : MonoBehaviour
         {
             Instantiate(targetIndicatorPrefab, transform.position, transform.rotation);
         }
-
+        panTiltHandler.fixHeading = true;
         moveBaseActive = true;
         publishTargetTransformEvents.Invoke(CreateTargetMessage(transform));
     }
 
     public void StopRobot()
     {
+        panTiltHandler.fixHeading = false;
         stopRobotEvents.Invoke();
     }
 
@@ -83,14 +91,12 @@ public class BaseTargetHandler : MonoBehaviour
 
     public void MoveToBaseLink()
     {
-        targetDistance = 0;
         transform.SetPositionAndRotation(baseLinkTransform.position, baseLinkTransform.rotation);
     }
 
     public void MoveTargetDistance(float distance)
     {
         var translation = new Vector3(0, 0, distance);
-        targetDistance += distance;
         transform.Translate(translation, Space.Self);
     }
 
@@ -104,28 +110,39 @@ public class BaseTargetHandler : MonoBehaviour
         }
     }
 
+    public void MoveRobotToTarget()
+    {
+        if (!moveBaseActive)
+        {
+            var goal = new MoveDistanceActionGoal();
+            goal.goal.move_distance = baseLinkTransform.transform.InverseTransformPoint(transform.position).z;
+            moveDistanceEvents.Invoke(goal);
+        }
+    }
+
     public void TurnRobotToCam()
     {
-        if (!moveBaseActive && panTiltHandler.panOffset != 0)
+        if (!moveBaseActive)
         {
+            panTiltHandler.fixHeading = true;
             var goal = new TurnAngleActionGoal();
             goal.goal.turn_angle = -panTiltHandler.panAngle * Mathf.Deg2Rad;
             baseHeadingPrevious = baseLinkTransform.eulerAngles.y;
-
             turnRobotEvents.Invoke(goal);
-            StartCoroutine(TurnCamWithRobot());
+            // StartCoroutine(TurnCamWithRobot());
         }
 
     }
 
     private IEnumerator TurnCamWithRobot()
     {
-        while (Mathf.Abs(panTiltHandler.panAngle) > 1)
+        while (Mathf.Abs(panTiltHandler.panOffset) > 1)
         {
             float baseHeadingDiff = baseLinkTransform.eulerAngles.y - baseHeadingPrevious;
             if (baseHeadingDiff > 180) baseHeadingDiff -= 360;
             if (baseHeadingDiff < -180) baseHeadingDiff += 360;
-            panTiltHandler.panAngle -= baseHeadingDiff;
+            panTiltHandler.panOffset -= baseHeadingDiff;
+            baseHeadingPrevious = baseLinkTransform.eulerAngles.y;
             yield return null;
         }
         panTiltHandler.panOffset = 0;
@@ -133,6 +150,7 @@ public class BaseTargetHandler : MonoBehaviour
 
     public void UpdateMoveBaseState(Unity.Robotics.ROSTCPConnector.MessageGeneration.Message result)
     {
+        panTiltHandler.fixHeading = false;
         moveBaseActive = false;
     }
 

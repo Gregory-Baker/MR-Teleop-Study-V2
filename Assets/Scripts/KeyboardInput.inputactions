@@ -197,6 +197,17 @@
                 },
                 {
                     "name": "",
+                    "id": "f5cb5f9f-913e-4339-a277-be0c0651dbc6",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CentreCam",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6a616342-b4fe-4d37-8181-59234a03515c",
                     "path": "<Keyboard>/tab",
                     "interactions": "",
@@ -278,6 +289,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "RobotForwards",
+                    "type": "Button",
+                    "id": "f3cb5de1-8957-4355-8ba1-a276b2e52dd3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TurnTargetOnTheSpot",
+                    "type": "Button",
+                    "id": "29bb0b14-7975-4bad-b6bf-67e8af193c7d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -346,6 +375,72 @@
                     "action": "StopRobot",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "78014852-6054-44a3-84b6-c7540cda1a3c",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RobotForwards",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "d2f08805-c9be-4300-a340-741b8355f64c",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RobotForwards",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "97a0f80a-287e-47c9-9d6e-7830b30107c5",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RobotForwards",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "f53878ab-0eff-49ad-801d-d811c4bc79c5",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnTargetOnTheSpot",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "a601a5b3-e3a7-4396-aca1-8ac9e032d630",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnTargetOnTheSpot",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "c45d3ca0-2d60-4891-909c-ec0a09837825",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnTargetOnTheSpot",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

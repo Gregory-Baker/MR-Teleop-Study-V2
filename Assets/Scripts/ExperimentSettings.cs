@@ -32,6 +32,8 @@ public class ExperimentSettings : ScriptableObject
 
     public Condition condition;
 
+    public bool armAttached;
+
     public float delay = 0f;
 
 }

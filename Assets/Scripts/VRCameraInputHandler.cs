@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Valve.VR;
 
-public class VRCommonInputHandler : MonoBehaviour
+public class VRCameraInputHandler : MonoBehaviour
 {
     [Header("Variables")]
     public float cameraTurnAngle = 30f;
@@ -15,14 +15,12 @@ public class VRCommonInputHandler : MonoBehaviour
     public SteamVR_Input_Sources inputSource = SteamVR_Input_Sources.Any;
 
     [Header("SteamVR Events")]
-    public SteamVR_Action_Boolean changeControlModeAction;
     public SteamVR_Action_Boolean centreCamAction;
     public SteamVR_Action_Boolean turnCamLeftAction;
     public SteamVR_Action_Boolean turnCamRightAction;
     public SteamVR_Action_Boolean turnRobotToCamAction;
 
     [Header("Events")]
-    public UnityEvent changeControlModeEvents;
     public UnityEvent centreCamEvents;
     public FloatEvent turnCamLeftEvents;
     public FloatEvent turnCamRightEvents;
@@ -30,7 +28,6 @@ public class VRCommonInputHandler : MonoBehaviour
 
     void OnEnable()
     {
-        changeControlModeAction[inputSource].onStateDown += ChangeControlMode;
         centreCamAction[inputSource].onStateDown += CentreCam;
         turnCamLeftAction[inputSource].onStateDown += TurnCamLeft;
         turnCamRightAction[inputSource].onStateDown += TurnCamRight;
@@ -39,16 +36,10 @@ public class VRCommonInputHandler : MonoBehaviour
 
     void OnDisable()
     {
-        changeControlModeAction[inputSource].onStateDown -= ChangeControlMode;
         centreCamAction[inputSource].onStateDown -= CentreCam;
         turnCamLeftAction[inputSource].onStateDown -= TurnCamLeft;
         turnCamRightAction[inputSource].onStateDown -= TurnCamRight;
         turnRobotToCamAction[inputSource].onStateDown -= TurnRobotToCam;
-    }
-
-    private void ChangeControlMode(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
-    {
-        changeControlModeEvents.Invoke();
     }
 
     private void CentreCam(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)

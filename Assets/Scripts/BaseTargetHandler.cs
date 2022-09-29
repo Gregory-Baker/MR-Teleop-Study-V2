@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RosMessageTypes.MoveBase;
 using Unity.Robotics.ROSTCPConnector.ROSGeometry;
-using RosMessageTypes.KinovaCustom;
+using RosMessageTypes.HuskyCustom;
 using UnityEngine.Events;
 
 public class BaseTargetHandler : MonoBehaviour

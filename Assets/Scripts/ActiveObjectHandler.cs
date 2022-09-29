@@ -19,6 +19,8 @@ public class ActiveObjectHandler : MonoBehaviour
 
     public List<GameObject> tutorialOnlyGameObjects;
 
+    public List<GameObject> armObjects;
+
     private void Awake()
     {
         // Disable
@@ -38,6 +40,8 @@ public class ActiveObjectHandler : MonoBehaviour
             foreach (var gameObject in trialOnlyGameObjects) gameObject.SetActive(false);
             foreach (var gameObject in tutorialOnlyGameObjects) gameObject.SetActive(false);
         }
+
+        if (!settings.armAttached) foreach (var gameObject in armObjects) gameObject.SetActive(false);
     }
 
     private void Update()

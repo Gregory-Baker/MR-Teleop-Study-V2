@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using System.Linq;
-using RosMessageTypes.KinovaCustom;
-using JetBrains.Annotations;
-using System;
 
 public class PanTiltHandler : MonoBehaviour
 {

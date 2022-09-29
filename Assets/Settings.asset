@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54228d7f075a07145bd5213cc7195c2a, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
-  participantID: 99
+  participantID: 0
   controlMethod: 0
   ui: 1
   condition: 2
